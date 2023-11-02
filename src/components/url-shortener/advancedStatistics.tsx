@@ -43,7 +43,7 @@ const AdvancedStatistics = () => {
     <FadeInWhenVisible>
       <div className="mx-[1.5rem] tablet:mx-[6rem] flex flex-col gap-6 flex-1 my-12 z-10">
         <div className="flex flex-col gap-2 justify-center items-center">
-          <div className="text-white font-bold text-[2rem] text-center">
+          <div className="text-white font-bold text-[2rem] text-center relative z-[3]">
             ADVANCED STATISTICS
           </div>
           <div className="text-frost font-medium text-md text-center w-full tablet:w-[60%] z-10">

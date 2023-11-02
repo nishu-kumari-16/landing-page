@@ -10,7 +10,7 @@ const GetInTouch = () => {
     <section className="bg-gray dark:bg-gray-900">
       <div className="container px-6 py-12 mx-auto">
         <div>
-          <div className="text-verDarkViolet font-bold uppercase text-[2rem] text-center">
+          <div className="text-verDarkViolet font-bold uppercase text-[2rem] text-center relative z-[3]">
             GET IN TOUCH
           </div>
 

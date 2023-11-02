@@ -45,7 +45,7 @@ const Testimonials = () => {
               Listen from our clients
             </Typography>
 
-            <div className="tablet:flex hidden tablet:gap-4 z-10 relative">
+            <div className="tablet:flex hidden tablet:gap-4 z-10 relative ">
               <button
                 onClick={() => keenSlider.current?.prev()}
                 className="rounded-full border border-darkViolet p-3 text- transition hover:bg-darkViolet hover:text-white"
@@ -71,7 +71,7 @@ const Testimonials = () => {
           </div>
         </div>
       </div>
-      <div className="mt-8 flex justify-center gap-4 tablet:hidden">
+      <div className="mt-8 flex justify-center gap-4 tablet:hidden pb-4">
         <button
           onClick={() => keenSlider.current?.prev()}
           className="rounded-full border border-darkViolet p-4 text-darkViolet transition hover:bg-darkViolet hover:text-white"
