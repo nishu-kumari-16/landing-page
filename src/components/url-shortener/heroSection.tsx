@@ -14,7 +14,7 @@ const HeroSection = () => {
           <div className="text-veryDarkBlue text-[2rem] tablet:text-[4rem] font-semibold leading-[2.25rem] tablet:leading-[5rem]">
             Book your vehicle from anywhere today!
           </div>
-          <div className="text-darkGray text-md font-medium w-[80%]">
+          <div className="text-darkGray text-md font-medium w-full tablet:w-[80%]">
             Everything your taxi business needs is already here! Go Vahan made
             for taxi service companies Everything your taxi business needs is
             already here! Go Vahan made for taxi service companies Everything
