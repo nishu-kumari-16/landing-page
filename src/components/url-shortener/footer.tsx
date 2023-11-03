@@ -44,7 +44,7 @@ const Footer = () => {
     <div className="flex  bg-verDarkViolet py-[1.5rem] tablet:py-[3rem] px-[1.5rem] justify-center tablet:justify-normal tablet:px-[6rem]">
       <div className="flex tablet:flex-row flex-col gap-4 flex-1 text-center tablet:text-left">
         <div className="flex-[4] text-white text-[2rem] font-semibold">
-          GoVaahan
+          AppName
         </div>
         {footerLinks.map((data, index) => (
           <div className="flex-[2] flex flex-col gap-4" key={index}>

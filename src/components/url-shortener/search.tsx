@@ -1,86 +1,8 @@
-import { ChangeEvent, useEffect, useState } from "react";
 import SearchBackground from "../../assets/icons/bg-shorten-desktop.svg";
-import axios from "axios";
 import FadeInWhenVisible from "../fade-in-visible";
 import AdvancedStatistics from "./advancedStatistics";
 
 const SearchContainer = () => {
-  const [searchKey, setSearchKey] = useState<string>("");
-  const [searchResult, setSearchResult] = useState<
-    { actualLink: string; shortenedLink: string }[]
-  >([]);
-  const [error, setError] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [copiedIndex, setCopiedIndex] = useState<number>(-1);
-
-  const savedData = localStorage.getItem("links");
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setError("");
-    setSearchKey(event.target.value);
-  };
-
-  const getShortenedUrl = async () => {
-    const encodedParams = new URLSearchParams();
-    encodedParams.set("url", searchKey);
-    const options = {
-      method: "POST",
-      url: "https://url-shortener-service.p.rapidapi.com/shorten",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        "X-RapidAPI-Key": "24397b3c22msh5c8800231cb5539p122b57jsn9a41b7b5cbeb",
-        "X-RapidAPI-Host": "url-shortener-service.p.rapidapi.com",
-      },
-      data: encodedParams,
-    };
-    setLoading(true);
-    try {
-      const { data } = await axios.request(options);
-      const { result_url } = data;
-      result_url &&
-        setSearchResult((prevState) => [
-          ...prevState,
-          { actualLink: searchKey, shortenedLink: result_url },
-        ]);
-    } catch (error: any) {
-      setError("This domain blocked in our system");
-    }
-    setLoading(false);
-    setSearchKey("");
-  };
-
-  const onSearch = () => {
-    if (!searchKey) {
-      setError("Please enter url");
-      return;
-    }
-    if (
-      savedData &&
-      JSON.parse(savedData)
-        .map((data: any) => data.actualLink)
-        .includes(searchKey)
-    ) {
-      setError("Link is already present. Please try with some other links");
-      return;
-    }
-    getShortenedUrl();
-  };
-
-  useEffect(() => {
-    localStorage.setItem("links", JSON.stringify(searchResult));
-  }, [searchResult]);
-
-  useEffect(() => {
-    savedData && setSearchResult(JSON.parse(savedData));
-  }, []);
-
-  useEffect(() => {
-    copiedIndex !== -1 &&
-      setTimeout(() => {
-        setCopiedIndex(-1);
-      }, 1000);
-  }, [copiedIndex]);
-
   return (
     <FadeInWhenVisible>
       <div className="flex flex-col gap-6  mt-[-5rem] mx-[1.5rem] tablet:mx-[6rem]">

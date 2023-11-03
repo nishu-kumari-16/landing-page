@@ -33,6 +33,7 @@ const colorPalette = {
   hanBlue: "#3575D4",
   duskPurple: "#F2F5FF",
   lightGrayFooter: "rgba(191, 191, 191, 0.25)",
+  yellow: "#fca503",
 };
 
 export default colorPalette;

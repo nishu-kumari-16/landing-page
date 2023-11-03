@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { ReactComponent as AppLogo } from "../../assets/icons/logo.svg";
-import { ReactComponent as AppLogoImg } from "../../assets/icons/logo-img.svg";
+import AppLogoImg from "../../assets/icons/logo.png";
 import { appRoutes } from "./meta";
 import colorPalette from "../..//helpers/color-palette";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -8,6 +8,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import TopBanner from "../top-banner";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -62,7 +63,7 @@ const Header = () => {
               width: 0,
               transition: { duration: 0.1 },
             }}
-            className={`left-0 flex-1 fixed z-[12] top-0 py-6 bg-[#FBF9FF] shadow-md flex-col bottom-0 
+            className={`left-0 flex-1 fixed z-[50] top-0 py-6 bg-[#FBF9FF] shadow-md flex-col bottom-0 
               `}
           >
             <Box
@@ -70,7 +71,7 @@ const Header = () => {
               `}
             >
               <CloseIcon
-                className="absolute left-3 top-6 hover:cursor-pointer "
+                className="absolute left-3 top-6 hover:cursor-pointer"
                 onClick={() => setMenuOpen(false)}
               />
               {renderRoutes(true)}
@@ -78,57 +79,59 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <Box
-        className="flex py-3 px-2 sm:px-0 sm:py-6 gap-4 items-center box-border fixed top-0 z-[11] w-full bg-white "
-        sx={{
-          paddingX: { md: "0", lg: "10rem" },
-          justifyContent: { xs: "space-between" },
-          paddingLeft: { xs: "3rem" },
-          boxShadow:
-            window.scrollY > 500
-              ? "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"
-              : "none",
-        }}
-      >
+      <Box className="flex flex-col flex-1 w-full fixed top-0 z-[15]">
         <Box
+          className="flex py-3 px-2 sm:px-0  sm:py-6 gap-4 items-center box-border  w-full bg-white "
           sx={{
-            display: { xs: isMenuOpen ? "none" : "block", md: "none" },
+            paddingX: { md: "0", lg: "10rem" },
+            justifyContent: { xs: "space-between" },
+            paddingLeft: { xs: "3rem" },
+            boxShadow:
+              window.scrollY > 500
+                ? "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"
+                : "none",
           }}
-          onClick={toggleMenu}
-          className="absolute left-3 top-6 hover:cursor-pointer"
         >
-          <MenuIcon />
-        </Box>
-        <Box className="flex gap-1 items-center">
-          <AppLogoImg />
-          {width > 500 && (
-            <Typography className="!font-bold text-darkViolet !text-2xl">
-              GoVaahan
-            </Typography>
-          )}
-        </Box>
-        <Box
-          className={` gap-11 items-center justify-center flex-1
+          <Box
+            sx={{
+              display: { xs: isMenuOpen ? "none" : "block", md: "none" },
+            }}
+            onClick={toggleMenu}
+            className="absolute left-3 top-6 hover:cursor-pointer"
+          >
+            <MenuIcon />
+          </Box>
+          <Box className="flex gap-1 items-center">
+            <img src={AppLogoImg} alt="logo" />
+            {width > 500 && (
+              <Typography className="!font-bold text-darkViolet !text-2xl">
+                AppName
+              </Typography>
+            )}
+          </Box>
+          <Box
+            className={` gap-11 items-center justify-center flex-1
         `}
-          sx={{ display: { xs: "none", md: "flex" } }}
-        >
-          {renderRoutes(false)}
-        </Box>
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
+            {renderRoutes(false)}
+          </Box>
 
-        <div className="flex gap-3 tablet:gap-6 items-center">
-          <div
-            className="text-grayishViolet text-sm
+          <div className="flex gap-3 tablet:gap-6 items-center">
+            <div
+              className="text-grayishViolet text-sm
              font-medium hover:text-veryDarkBlue cursor-pointer"
-          >
-            Login
-          </div>
-          <button
-            className="text-white text-sm bg-darkViolet border-none rounded-[3rem] px-6 py-3
+            >
+              Login
+            </div>
+            <button
+              className="text-white text-sm bg-darkViolet border-none rounded-[3rem] px-6 py-3
              font-medium hover: cursor-pointer hover:opacity-[0.8]"
-          >
-            Sign up
-          </button>
-        </div>
+            >
+              Sign up
+            </button>
+          </div>
+        </Box>
       </Box>
     </React.Fragment>
   );

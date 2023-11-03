@@ -4,15 +4,13 @@ import GetInTouch from "../get-in-touch";
 import Header from "../header";
 import OurServices from "../our-services";
 import Testimonials from "../testimonials";
-import AdvancedStatistics from "../url-shortener/advancedStatistics";
-import BoostLinks from "../url-shortener/boostLink";
 import Footer from "../url-shortener/footer";
-import HeroSection from "../url-shortener/heroSection";
-import SearchContainer from "../url-shortener/search";
+import HeroSection from "../hero-section";
 import Button from "../button";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import { AnimatePresence } from "framer-motion";
-import FadeInWhenVisible from "../fade-in-visible";
+import HeaderLarge from "../header-large";
+import BookYourTaxiRide from "../book-ride";
+import WhatWeOffer from "../what-we-offer";
 
 const Layout = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -20,7 +18,7 @@ const Layout = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      window.scrollY > 500 ? setIsvisible(true) : setIsvisible(false);
+      window.scrollY > 100 ? setIsvisible(true) : setIsvisible(false);
     });
     return () => {
       window.removeEventListener("scroll", () => {});
@@ -33,12 +31,13 @@ const Layout = () => {
       id="hello"
       className="flex flex-col h-full bg-white overflow-y-overlay overflow-x-hidden ::webkit-scrollbar-hidden"
     >
-      <Header />
+      {!isVisible && window.innerWidth > 800 ? <HeaderLarge /> : <Header />}
       <HeroSection />
-      <div className="bg-gray h-fit pb-[4rem] flex flex-col gap-[4rem]">
-        <SearchContainer />
+      <div className="bg-white h-fit pb-[4rem] flex flex-col gap-[4rem]">
+        {/* <SearchContainer /> */}
+        <BookYourTaxiRide />
       </div>
-      <OurServices />
+      <WhatWeOffer />
       <Testimonials />
       <GetInTouch />
       <ContactUs />
@@ -46,7 +45,7 @@ const Layout = () => {
       <Footer />
       {isVisible && (
         <Button
-          className="!w-10 !h-10 !min-w-0 !rounded-full !bg-darkViolet !fixed bottom-5 right-5 !text-white"
+          className="!w-10 !h-10 !min-w-0 !rounded-full !bg-yellow !fixed bottom-5 right-5 !text-white"
           onClick={() => {
             ref.current?.scrollIntoView({ behavior: "smooth" });
           }}
