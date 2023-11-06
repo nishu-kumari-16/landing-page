@@ -11,6 +11,8 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import HeaderLarge from "../header-large";
 import BookYourTaxiRide from "../book-ride";
 import WhatWeOffer from "../what-we-offer";
+import FeelYourJourney from "../feel-your-journey";
+import OurExpertDrivers from "../our-expert-drivers";
 
 const Layout = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -39,6 +41,8 @@ const Layout = () => {
       </div>
       <WhatWeOffer />
       <Testimonials />
+      <FeelYourJourney />
+      <OurExpertDrivers />
       <GetInTouch />
       <ContactUs />
       {/* <BoostLinks /> */}
