@@ -8,7 +8,7 @@ import colorPalette from "../../helpers/color-palette";
 const GetApp = () => {
   return (
     <div className="flex px-4 tablet:px-[8rem] py-[5rem] relative">
-      <div className="flex flex-col gap-4 w-[40%]">
+      <div className="flex flex-col gap-4 w-full tablet:w-[40%]">
         <Typography
           fontSize={13}
           color={colorPalette.yellow}
