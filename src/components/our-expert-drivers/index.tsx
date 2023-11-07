@@ -4,7 +4,7 @@ import { ourDrivers } from "./meta";
 
 const OurExpertDrivers = () => {
   return (
-    <div className="flex flex-col gap-6 justify-center items-center px-4 tablet:gap-2 tablet:px-[8rem] py-[5rem]">
+    <div className="flex flex-col gap-6 justify-center items-center px-4 tablet:gap-6 tablet:px-[8rem] py-[5rem]">
       <Typography
         fontSize={14}
         color={colorPalette.yellow}

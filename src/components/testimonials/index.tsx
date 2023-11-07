@@ -6,20 +6,31 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { testimonialsMetaData } from "./meta";
 import { Typography } from "@mui/material";
 import FadeInWhenVisible from "../fade-in-visible";
+import { useState } from "react";
+import WhyRideWithRidek from "../why-ride-with-ridek";
 
 const Testimonials = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   const [sliderRef, keenSlider] = useKeenSlider<HTMLDivElement>({
     loop: true,
+    initial: 0,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
     slides: {
       origin: "center",
-      perView: 1.25,
+      perView: 1,
       spacing: 16,
     },
     breakpoints: {
       "(min-width: 1024px)": {
         slides: {
           origin: "auto",
-          perView: 1.5,
+          perView: 1,
           spacing: 32,
         },
       },
@@ -27,64 +38,51 @@ const Testimonials = () => {
   });
 
   return (
-    <section className="bg-mistGray pt-[4rem] relative">
-      <div className="text-verDarkViolet font-bold upper text-[2rem] text-center">
-        TESTIMONIALS
-      </div>
-      <div className="mx-[1.5rem] tablet:mx-[6rem]  px-4 py-12 sm:px-6 tablet:me-0 tablet:py-16 tablet:pe-0 tablet:ps-8 xl:py-24">
-        <div className="grid grid-cols-1 gap-8 tablet:grid-cols-3 tablet:items-center tablet:gap-16">
-          <div className="max-w- ltr:sm:text-left rtl:sm:text-right gap-4 flex flex-col">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl z-10 relative">
-              Don't just take our word for it...
-            </h2>
-            <FadeInWhenVisible>
-              <TestimonialsIllustration className="absolute bottom-[-50%] left-[-5%] w-[35%] opacity-[0.7]" />
-            </FadeInWhenVisible>
-
-            <Typography className="mt-4 !text-md !font-medium z-10 relative">
-              Listen from our clients
+    <section className="bg-mistGray relative pr-4 tablet:pr-[8rem]">
+      <div className="mx-[1.5rem] tablet:mx-[6rem]  px-4  sm:px-6 tablet:me-0 tablet:pe-0 tablet:ps-8 xl:py-24">
+        <div className="grid grid-cols-1 gap-8 tablet:grid-cols-2 tablet:items-center tablet:gap-16">
+          <div className="max-w- ltr:sm:text-left rtl:sm:text-right gap-4 flex flex-col pt-12 pb-12">
+            <Typography
+              className="text-yellow "
+              fontSize={13}
+            >{`/// CLIENTS TESTIMONIAL`}</Typography>
+            <Typography fontSize={24}>Ridek Passenger Reviews...</Typography>
+            <Typography fontSize={12} className="text-cloudyGray">
+              We successfully cope with tasks of varying complexity, provide
+              long-term guarantees and regularly master technologies.
             </Typography>
-
-            <div className="tablet:flex hidden tablet:gap-4 z-10 relative ">
-              <button
-                onClick={() => keenSlider.current?.prev()}
-                className="rounded-full border border-darkViolet p-3 text- transition hover:bg-darkViolet hover:text-white"
-              >
-                <ArrowBackIosNewIcon />
-              </button>
-
-              <button
-                onClick={() => keenSlider.current?.next()}
-                className="rounded-full border border-darkViolet p-3 text-darkViolet transition hover:bg-darkViolet hover:text-white"
-              >
-                <ArrowForwardIosIcon />
-              </button>
-            </div>
-          </div>
-
-          <div className="-mx-6 tablet:col-span-2 tablet:mx-0">
-            <div ref={sliderRef} className="keen-slider p-4">
+            <div ref={sliderRef} className="keen-slider">
               {testimonialsMetaData.map((data, index) => (
                 <TestimonialsCard {...data} key={index} />
               ))}
             </div>
+            {loaded && keenSlider.current && (
+              <div className="flex justify-center px-10">
+                {[
+                  ...Array(
+                    keenSlider.current.track.details.slides.length
+                  ).keys(),
+                ].map((value, idx) => {
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        keenSlider.current?.moveToIdx(idx);
+                      }}
+                      className={`border-none w-2 h-2 bg-gray p-1 mx-1 rounded-full cursor-pointer z-10 ${
+                        currentSlide === idx && " !bg-yellow"
+                      }`}
+                    ></button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          <div className="-mx-6 tablet:col-span-1  tablet:mx-0 h-full">
+            <WhyRideWithRidek />
           </div>
         </div>
-      </div>
-      <div className="mt-8 flex justify-center gap-4 tablet:hidden pb-4">
-        <button
-          onClick={() => keenSlider.current?.prev()}
-          className="rounded-full border border-darkViolet p-4 text-darkViolet transition hover:bg-darkViolet hover:text-white"
-        >
-          <ArrowBackIosNewIcon />
-        </button>
-
-        <button
-          onClick={() => keenSlider.current?.next()}
-          className="rounded-full border border-darkViolet p-4 text-darkViolet transition hover:bg-darkViolet hover:text-white"
-        >
-          <ArrowForwardIosIcon />
-        </button>
       </div>
     </section>
   );

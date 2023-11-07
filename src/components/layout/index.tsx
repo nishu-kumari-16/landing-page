@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import ContactUs from "../contact-us";
 import GetInTouch from "../get-in-touch";
 import Header from "../header";
-import OurServices from "../our-services";
 import Testimonials from "../testimonials";
 import Footer from "../url-shortener/footer";
 import HeroSection from "../hero-section";
@@ -13,6 +12,8 @@ import BookYourTaxiRide from "../book-ride";
 import WhatWeOffer from "../what-we-offer";
 import FeelYourJourney from "../feel-your-journey";
 import OurExpertDrivers from "../our-expert-drivers";
+import GetApp from "../get-app";
+import OurServices from "../our-services";
 
 const Layout = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -36,16 +37,16 @@ const Layout = () => {
       {!isVisible && window.innerWidth > 800 ? <HeaderLarge /> : <Header />}
       <HeroSection />
       <div className="bg-white h-fit pb-[4rem] flex flex-col gap-[4rem]">
-        {/* <SearchContainer /> */}
         <BookYourTaxiRide />
       </div>
       <WhatWeOffer />
       <Testimonials />
+      <GetApp />
+      <OurServices />
       <FeelYourJourney />
       <OurExpertDrivers />
       <GetInTouch />
       <ContactUs />
-      {/* <BoostLinks /> */}
       <Footer />
       {isVisible && (
         <Button

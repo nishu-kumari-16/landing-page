@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import { ReactComponent as AppLogo } from "../../assets/icons/logo.svg";
 import AppLogoImg from "../../assets/icons/logo.png";
 import { appRoutes } from "./meta";
 import colorPalette from "../..//helpers/color-palette";
@@ -8,7 +7,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import TopBanner from "../top-banner";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -79,7 +77,7 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <Box className="flex flex-col flex-1 w-full fixed top-0 z-[15]">
+      <Box className="flex flex-col flex-1 w-full fixed top-0 z-[15] shadow-sm">
         <Box
           className="flex py-3 px-2 sm:px-0  sm:py-6 gap-4 items-center box-border  w-full bg-white "
           sx={{

@@ -1,27 +1,70 @@
-import OurServiceCard from "./card";
+import { Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import { ourServiceData } from "./meta";
 
 const OurServices = () => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const [currentData, setCurrentData] = useState<any>();
+
+  useEffect(() => {
+    setCurrentData(ourServiceData[activeIndex]);
+  }, [activeIndex]);
+
   return (
-    <div
-      id="services"
-      className="section relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white"
-    >
-      <div className="container xl:max-w-6xl mx-auto px-4">
-        <header className="text-center mx-auto mb-12 tablet:px-20">
-          <h2 className="text-3xl leading-normal capitalize mb-2 font-bold text-darkViolet">
-            WHAT WE DO
-          </h2>
-          <p className="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">
-            Save time managing advertising &amp; Content for your business.
-          </p>
-        </header>
-        <div className="flex flex-wrap flex-row -mx-4 text-center ">
-          {ourServiceData.map((data, index) => (
-            <OurServiceCard {...data} key={index} />
-          ))}
+    <div className="flex flex-col py-[5rem] px-4 tablet:px-[8rem] bg-mistGray">
+      <header className="text-center mx-auto mb-12 tablet:px-20">
+        <Typography fontSize={14} className="!font-medium !text-yellow">
+          OUR SERVICES
+        </Typography>
+        <Typography fontSize={28} className="!font-medium ">
+          BEST SOLUTIONS HERE
+        </Typography>
+      </header>
+      <div className="flex gap-6">
+        <div
+          className={`flex-1 text-center p-2 bg-black text-white rounded-sm !font-medium cursor-pointer ${
+            activeIndex === 0 && "bg-yellow"
+          }`}
+          onClick={() => setActiveIndex(0)}
+        >
+          CABS
+        </div>
+        <div
+          className={`flex-1 text-center p-2 bg-black rounded-sm text-white cursor-pointer !font-medium ${
+            activeIndex === 1 && "bg-yellow"
+          }`}
+          onClick={() => setActiveIndex(1)}
+        >
+          TRANSPORT
         </div>
       </div>
+
+      {currentData && (
+        <div className="flex flex-wrap gap-4 border tablet:flex-row flex-col border-mutedGray shadow-sm rounded-lg p-6 my-6">
+          <div className="flex flex-col gap-2 flex-1 justify-center items-center">
+            <Typography fontSize={14}>
+              Passengers : {currentData.passengers}
+            </Typography>
+            <Typography fontSize={14}>
+              Luggage Carry : {currentData.luggageCarry}
+            </Typography>
+            <Typography fontSize={14}>
+              Heated Seats : {currentData.heatedSeats}
+            </Typography>
+            <Typography fontSize={14}>
+              Air Condition : {currentData.airCondition}
+            </Typography>
+          </div>
+          <img src={currentData.image} alt="img" className="w-[30%] flex-1" />
+          <div className="flex flex-col gap-2 flex-1 justify-center">
+            <Typography fontSize={24}>{currentData.title}</Typography>
+            <Typography fontSize={14} className="text-darkGray">
+              {currentData.description}
+            </Typography>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

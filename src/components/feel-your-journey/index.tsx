@@ -16,7 +16,7 @@ const FeelYourJourney = () => {
           <Typography fontSize={24} fontWeight={700} color={colorPalette.white}>
             Feel Your journey with Ridek!
           </Typography>
-          <Button className="!bg-black !w-fit !text-white !capitalize">
+          <Button className="!bg-black !px-6 !w-fit !text-white !capitalize">
             Book a Taxi
           </Button>
         </div>

@@ -1,45 +1,26 @@
-import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
-import { ReactComponent as SocialContent } from "../../assets/icons/social-content.svg";
-import { ReactComponent as CreativeAds } from "../../assets/icons/search.svg";
-import { ReactComponent as BrandIdentity } from "../../assets/icons/search.svg";
-import { ReactComponent as BudgetMarketing } from "../../assets/icons/social-content.svg";
-import { ReactComponent as OptimizeConversion } from "../../assets/icons/search.svg";
+import CarIcon from "../../assets/icons/car.png";
+import TruckIcon from "../../assets/icons/truck.png";
 
 export const ourServiceData = [
   {
-    title: "SEO Optimization",
+    passengers: 4,
+    luggageCarry: 2,
+    heatedSeats: "No",
+    airCondition: "Yes",
+    title: "Cabs",
     description:
-      "This is a wider card with supporting text below as a natural content.",
-    icon: <SearchIcon />,
+      "Book cab rides with a few clicks using the GO vaahan provides an cab and transport ride for the convenience of its customers. You can choose it for everyday travel at an affordable price.",
+    image: CarIcon,
   },
+
   {
-    title: "Social Content",
+    passengers: 5,
+    luggageCarry: 56,
+    heatedSeats: "No",
+    airCondition: "No",
+    title: "Transport",
     description:
-      "This is a wider card with supporting text below as a natural content.",
-    icon: <SocialContent />,
-  },
-  {
-    title: "Creative Ads",
-    description:
-      "This is a wider card with supporting text below as a natural content.",
-    icon: <CreativeAds />,
-  },
-  {
-    title: "Brand Identity",
-    description:
-      "This is a wider card with supporting text below as a natural content.",
-    icon: <SearchIcon />,
-  },
-  {
-    title: "Budget & Marketing",
-    description:
-      "This is a wider card with supporting text below as a natural content.",
-    icon: <SearchIcon />,
-  },
-  {
-    title: "Optimize Conversions",
-    description:
-      "This is a wider card with supporting text below as a natural content.",
-    icon: <SearchIcon />,
+      "Book truck rides with a few clicks using the GO vaahan provides an cab and transport ride for the convenience of its customers. You can choose it for everyday travel at an affordable price.",
+    image: TruckIcon,
   },
 ];
