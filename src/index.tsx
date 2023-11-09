@@ -4,6 +4,8 @@ import reportWebVitals from "./reportWebVitals";
 import Layout from "./components/layout";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Loader from "./components/loader-component";
+import Home from "./pages/home";
+import ContactUs from "./pages/contact-us";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,7 +14,7 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Home />,
     loader: () => <Loader />,
   },
   {
@@ -22,7 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: "home",
-    element: <Layout />,
+    element: <Home />,
     loader: () => <Loader />,
   },
   {
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
   },
   {
     path: "contact",
-    element: <div>Contact</div>,
+    element: <ContactUs />,
     loader: () => <Loader />,
   },
 ]);

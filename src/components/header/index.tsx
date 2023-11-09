@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import AppLogoImg from "../../assets/icons/logo.png";
 import { appRoutes } from "./meta";
 import colorPalette from "../..//helpers/color-palette";
@@ -7,6 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -115,19 +116,12 @@ const Header = () => {
             {renderRoutes(false)}
           </Box>
 
-          <div className="flex gap-3 tablet:gap-6 items-center">
-            <div
-              className="text-grayishViolet text-sm
-             font-medium hover:text-veryDarkBlue cursor-pointer"
-            >
-              Login
-            </div>
-            <button
-              className="text-white text-sm bg-darkViolet border-none rounded-[3rem] px-6 py-3
-             font-medium hover: cursor-pointer hover:opacity-[0.8]"
-            >
-              Sign up
-            </button>
+          <div className="flex gap-4 justify-end items-center ">
+            <SearchIcon className="text-darkGray" />
+            <MenuIcon className="text-darkGray" />
+            <Button className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]">
+              Book a Taxi
+            </Button>
           </div>
         </Box>
       </Box>

@@ -1,6 +1,5 @@
 import FadeInWhenVisible from "../fade-in-visible";
 import Car from "../../assets/icons/car.png";
-import Input from "../input";
 import { Button, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/PersonOutlineOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -9,6 +8,7 @@ import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
+import MuiInput from "../input/muiInput";
 
 const BookYourTaxiRide = () => {
   return (
@@ -23,31 +23,32 @@ const BookYourTaxiRide = () => {
               Book Your Taxi Ride
             </Typography>
             <div className="flex gap-6 justify-end flex-col tablet:flex-row">
-              <Input
+              <MuiInput
                 endAdornment={<PersonIcon className="text-yellow " />}
                 placeholder="Enter name"
+                className="!bg-[#575859]"
               />
-              <Input
+              <MuiInput
                 endAdornment={<EmailOutlinedIcon className="text-yellow " />}
                 placeholder="Enter email"
               />
-              <Input
+              <MuiInput
                 endAdornment={<SellOutlinedIcon className="text-yellow " />}
                 placeholder="Enter category"
               />
             </div>
             <div className="flex gap-6 justify-end  flex-col tablet:flex-row">
-              <Input
+              <MuiInput
                 endAdornment={<PeopleOutlinedIcon className="text-yellow " />}
                 placeholder="No of person"
               />
-              <Input
+              <MuiInput
                 endAdornment={
                   <LocationOnOutlinedIcon className="text-yellow " />
                 }
                 placeholder="Start Destination"
               />
-              <Input
+              <MuiInput
                 endAdornment={
                   <LocationOnOutlinedIcon className="text-yellow " />
                 }
@@ -55,14 +56,14 @@ const BookYourTaxiRide = () => {
               />
             </div>
             <div className="flex gap-6 justify-end  flex-col tablet:flex-row">
-              <Input
+              <MuiInput
                 endAdornment={
                   <CalendarMonthOutlinedIcon className="text-yellow " />
                 }
                 type="date"
                 placeholder="Enter Date"
               />
-              <Input
+              <MuiInput
                 endAdornment={
                   <AccessTimeOutlinedIcon className="text-yellow " />
                 }

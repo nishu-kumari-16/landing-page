@@ -1,16 +1,17 @@
-import HeroImage from "../../assets/icons/hero-illustration-3.svg";
 import { motion } from "framer-motion";
 import SearchBackground from "../../assets/icons/bg-shorten-desktop.svg";
+import ComponentSlider from "../component-slider";
+import { heroSectionImages } from "./meta";
 
 const HeroSection = () => {
   return (
-    <div className="flex flex-col-reverse tablet:flex-row relative py-[6rem] mt-[10rem]  text-center tablet:text-left gap-4 bg-darkViolet">
+    <div className="flex flex-col-reverse tablet:flex-row relative py-[6rem] tablet:py-[12rem] mt-0 tablet:mt-[10rem]  text-center tablet:text-left gap-4 bg-darkViolet">
       <img
         src={SearchBackground}
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full"
         alt="search-bg"
       />
-      <div className="flex flex-col gap-4 flex-1 justify-center items-center tablet:items-start tablet:pr-0 pr-[1.5rem] pl-[1.5rem] tablet:pl-[6rem]">
+      <div className="flex flex-col gap-4 w-full tablet:w-[50%] justify-center items-center tablet:items-start tablet:pr-0 pr-[1.5rem] pl-[1.5rem] tablet:pl-[6rem]">
         <motion.div
           initial={{ opacity: 0, x: "-100vh" }}
           animate={{ opacity: 1, x: 0 }}
@@ -36,14 +37,14 @@ const HeroSection = () => {
           </button>
         </motion.div>
       </div>
-      <motion.img
+      <motion.div
         initial={{ opacity: 0, x: "200vh" }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        src={HeroImage}
-        className="flex-1 tablet:mr-[-40%] laptop:mr-[-10%] mr-[0] self-center h-fit z-[3]"
-        alt="img"
-      />
+        className="flex-1 tablet:mr-[-40%] laptop:mr-[-10%] mr-[0] self-center h-fit z-[3] relative tablet:absolute top-0 right-0 tablet:top-[8rem] tablet:right-[-30%] w-full"
+      >
+        <ComponentSlider components={heroSectionImages} />
+      </motion.div>
     </div>
   );
 };

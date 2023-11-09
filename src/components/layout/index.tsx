@@ -1,23 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import ContactUs from "../contact-us";
-import GetInTouch from "../get-in-touch";
 import Header from "../header";
-import Testimonials from "../testimonials";
 import Footer from "../url-shortener/footer";
 import HeroSection from "../hero-section";
 import Button from "../button";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import HeaderLarge from "../header-large";
-import BookYourTaxiRide from "../book-ride";
-import WhatWeOffer from "../what-we-offer";
-import FeelYourJourney from "../feel-your-journey";
-import OurExpertDrivers from "../our-expert-drivers";
-import GetApp from "../get-app";
-import OurServices from "../our-services";
+import { useLocation } from "react-router-dom";
 
-const Layout = () => {
+const Layout = ({ children }: any) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsvisible] = useState<boolean>(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -34,19 +27,14 @@ const Layout = () => {
       id="hello"
       className="flex flex-col h-full bg-white overflow-y-overlay overflow-x-hidden ::webkit-scrollbar-hidden"
     >
-      {!isVisible && window.innerWidth > 800 ? <HeaderLarge /> : <Header />}
-      <HeroSection />
-      <div className="bg-white h-fit pb-[4rem] flex flex-col gap-[4rem]">
-        <BookYourTaxiRide />
-      </div>
-      <WhatWeOffer />
-      <Testimonials />
-      <GetApp />
-      <OurServices />
-      <FeelYourJourney />
-      <OurExpertDrivers />
-      <GetInTouch />
-      <ContactUs />
+      {!isVisible &&
+      window.innerWidth > 800 &&
+      ["/", "/home"].includes(pathname) ? (
+        <HeaderLarge />
+      ) : (
+        <Header />
+      )}
+      {children}
       <Footer />
       {isVisible && (
         <Button
