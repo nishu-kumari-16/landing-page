@@ -11,9 +11,9 @@ const ContactUs = () => {
       <div className="overflow-hidden flex-1 h-96 tablet:h-auto mt-0 tablet:mt-[6rem] ">
         <iframe
           width="100%"
-          height="20%"
+          height="300px"
           title="map"
-          src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+          src="https://maps.google.com/maps?width=100%&amp;height=800&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
         ></iframe>
       </div>
       <div className="flex pr-4 tablet:pr-[8rem] flex-wrap relative gap-8 overflow-hidden ">
