@@ -9,6 +9,7 @@ import Testimonials from "../../components/testimonials";
 import WhatWeOffer from "../../components/what-we-offer";
 import HeroSection from "../../components/hero-section";
 import GetApp from "../../components/get-app";
+import NewsAndInsights from "../../components/news-insights";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
       <OurServices />
       <FeelYourJourney />
       <OurExpertDrivers />
+      <NewsAndInsights />
       <GetInTouch />
     </Layout>
   );

@@ -50,7 +50,7 @@ const WhatWeOffer = () => {
   });
   return (
     <FadeInWhenVisible>
-      <div className="px-[1.5rem] tablet:px-[6rem] flex flex-col gap-6 flex-1 mt-12 z-10 bg-darkViolet pt-6 relative">
+      <div className="px-[1rem] tablet:px-[8rem] flex flex-col gap-6 flex-1 mt-12 z-10 bg-darkViolet pt-6 relative">
         <div className="flex flex-col gap-2 justify-center items-center">
           <Typography fontSize={14} className="text-yellow !font-semibold">
             {` /// WHAT WE OFFER`}

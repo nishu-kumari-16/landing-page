@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import Layout from "./components/layout";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Loader from "./components/loader-component";
 import Home from "./pages/home";
 import ContactUs from "./pages/contact-us";
+import Careers from "./pages/careers";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
     loader: () => <Loader />,
   },
   {
-    path: "team",
-    element: <div>Team</div>,
+    path: "careers",
+    element: <Careers />,
     loader: () => <Loader />,
   },
   {
