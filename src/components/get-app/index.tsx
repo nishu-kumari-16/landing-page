@@ -11,7 +11,7 @@ const GetApp = () => {
       <div className="flex flex-col gap-4 w-full tablet:w-[40%]">
         <Typography
           fontSize={13}
-          color={colorPalette.yellow}
+          color={colorPalette.fulvous}
         >{`/// ONLINE BOOKING`}</Typography>
         <Typography fontSize={28} className="!font-semibold">
           Get the Ridek Mobile App and Start Your Journey!

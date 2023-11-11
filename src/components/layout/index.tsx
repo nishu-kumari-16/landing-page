@@ -38,7 +38,7 @@ const Layout = ({ children }: any) => {
       <Footer />
       {isVisible && (
         <Button
-          className="!w-10 !h-10 !min-w-0 !rounded-full !bg-yellow !fixed bottom-5 right-5 !text-white"
+          className="!w-10 !h-10 !min-w-0 !rounded-full !bg-fulvous !fixed bottom-5 right-5 !text-white"
           onClick={() => {
             ref.current?.scrollIntoView({ behavior: "smooth" });
           }}

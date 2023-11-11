@@ -1,0 +1,133 @@
+import { Dialog, IconButton, Typography } from "@mui/material";
+import colorPalette from "../../helpers/color-palette";
+import { SubmitHandler, useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Input from "../input";
+import Button from "../button";
+import { useEffect } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import { toast } from "react-toastify";
+
+const yupSchema = yup
+  .object({
+    name: yup.string().required("Name is required"),
+    job: yup.string().required("Job is required"),
+    email: yup
+      .string()
+      .email("Please enter valid email")
+      .required("Email is required"),
+    phone: yup
+      .string()
+      .max(10, "Please enter valid mobile number")
+      .min(10, "Please enter valid mobile number")
+      .required("Mobile number is required"),
+
+    resume: yup.mixed().required("Resume is required"),
+  })
+  .required();
+
+const CareersForm = ({ isOpen, onClose, job }: any) => {
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onSubmit" });
+
+  const onSubmit: SubmitHandler<any> = (data) => {
+    console.log(data, "applyForm");
+    onClose && onClose();
+    toast("🦄Successfully Applied", {
+      type: "success",
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+    });
+  };
+
+  useEffect(() => {
+    setValue("job", job);
+  }, [job, setValue]);
+
+  return (
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      className=" rounded-sm"
+      maxWidth="sm"
+      fullWidth
+    >
+      <IconButton
+        aria-label="close"
+        onClick={onClose}
+        sx={{
+          position: "absolute",
+          right: 8,
+          top: 8,
+          color: colorPalette.gray,
+        }}
+      >
+        <CloseIcon />
+      </IconButton>
+      <div className="flex flex-col gap-4  p-6">
+        <Typography color={colorPalette.black} fontWeight={600} fontSize={24}>
+          Apply for this opportunity
+        </Typography>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-5 flex-1"
+        >
+          <Input
+            name="phone"
+            register={register}
+            placeholder="Mobile Number"
+            error={errors.phone?.message?.toString()}
+            className="flex-1"
+            label="Phone"
+          />
+          <Input
+            name="name"
+            register={register}
+            placeholder="Your Name"
+            error={errors.name?.message?.toString()}
+            className="flex-1"
+            label="Your Name"
+          />
+          <Input
+            name="email"
+            placeholder="Email"
+            register={register}
+            error={errors.email?.message?.toString()}
+            className="flex-1"
+            label="Email"
+          />
+          <Input
+            name="job"
+            register={register}
+            disabled
+            value={job}
+            className="flex-1"
+            label="Job"
+          />
+          <Input
+            name="resume"
+            register={register}
+            type="file"
+            className="flex-1"
+            label="Resume"
+          />
+
+          <Button
+            variant="outlined"
+            className="border w-full py-4 !box-border !text-md !border-fulvous !text-fulvous hover:!bg-fulvous hover:!text-white"
+            type="submit"
+          >
+            APPLY
+          </Button>
+        </form>
+      </div>
+    </Dialog>
+  );
+};
+export default CareersForm;

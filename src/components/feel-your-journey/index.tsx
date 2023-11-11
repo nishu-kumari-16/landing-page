@@ -7,7 +7,7 @@ import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
 
 const FeelYourJourney = () => {
   return (
-    <div className="flex bg-yellow w-full tablet:w-[80%]  relative">
+    <div className="flex bg-fulvous w-full tablet:w-[80%]  relative">
       <div className="flex  backdrop-brightness-90 gap-6 w-full flex-wrap py-[3rem] tablet:px-[8rem] px-4 tablet:z-0 z-[2]">
         <div className="flex flex-col gap-4">
           <Typography fontSize={14} color={colorPalette.codGray}>
@@ -23,7 +23,7 @@ const FeelYourJourney = () => {
         <div className="flex flex-col gap-4 z-[3]  ">
           {feelYourJourneyData.map((data, index) => (
             <div className="flex gap-4 items-center" key={index}>
-              <div className="flex justify-center items-center !h-8 bg-black rounded-sm p-2 text-yellow">
+              <div className="flex justify-center items-center !h-8 bg-black rounded-sm p-2 text-fulvous">
                 <ArrowForwardIos className="!w-4 !h-4" />
               </div>
               <Typography fontSize={14} color={colorPalette.white}>

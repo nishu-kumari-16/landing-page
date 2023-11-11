@@ -14,7 +14,7 @@ const Card = ({ title, description, icon }: any) => {
         {description}
       </div>
       <Button
-        className="!bg-yellow !capitalize w-fit !text-white !ml-4"
+        className="!bg-fulvous !capitalize w-fit !text-white !ml-4"
         variant="contained"
       >
         Read More
@@ -52,7 +52,7 @@ const WhatWeOffer = () => {
     <FadeInWhenVisible>
       <div className="px-[1rem] tablet:px-[8rem] flex flex-col gap-6 flex-1 mt-12 z-10 bg-darkViolet pt-6 relative">
         <div className="flex flex-col gap-2 justify-center items-center">
-          <Typography fontSize={14} className="text-yellow !font-semibold">
+          <Typography fontSize={14} className="text-fulvous !font-semibold">
             {` /// WHAT WE OFFER`}
           </Typography>
           <div className="text-white font-bold text-[2rem] text-center relative z-[3]">
@@ -66,7 +66,7 @@ const WhatWeOffer = () => {
         <div className="block px-8 relative z-[2]">
           <button
             onClick={() => keenSlider.current?.prev()}
-            className=" absolute top-[45%] rounded-full z-[2] h-[3rem] min-w-[3rem]  bg-yellow transition  hover:text-white"
+            className=" absolute top-[45%] rounded-full z-[2] h-[3rem] min-w-[3rem]  bg-fulvous transition  hover:text-white"
           >
             <ArrowBackIosNewIcon className="text-white" />
           </button>
@@ -82,7 +82,7 @@ const WhatWeOffer = () => {
           </div>
           <button
             onClick={() => keenSlider.current?.prev()}
-            className="rounded-full absolute right-2 top-[45%]  h-[3rem] min-w-[3rem]  bg-yellow transition  hover:text-white"
+            className="rounded-full absolute right-2 top-[45%]  h-[3rem] min-w-[3rem]  bg-fulvous transition  hover:text-white"
           >
             <ArrowForwardIosIcon className="text-white" />
           </button>

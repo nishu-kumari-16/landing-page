@@ -18,7 +18,7 @@ const OurServices = () => {
   return (
     <div className="flex flex-col py-[5rem] px-4 tablet:px-[8rem] bg-mistGray">
       <header className="text-center mx-auto mb-12 tablet:px-20">
-        <Typography fontSize={14} className="!font-medium !text-yellow">
+        <Typography fontSize={14} className="!font-medium !text-fulvous">
           OUR SERVICES
         </Typography>
         <Typography fontSize={28} className="!font-medium ">
@@ -28,7 +28,7 @@ const OurServices = () => {
       <div className="flex gap-6">
         <div
           className={`flex-1 text-center p-2 bg-black text-white rounded-sm !font-medium cursor-pointer ${
-            activeIndex === 0 && "bg-yellow"
+            activeIndex === 0 && "bg-fulvous"
           }`}
           onClick={() => setActiveIndex(0)}
         >
@@ -36,7 +36,7 @@ const OurServices = () => {
         </div>
         <div
           className={`flex-1 text-center p-2 bg-black rounded-sm text-white cursor-pointer !font-medium ${
-            activeIndex === 1 && "bg-yellow"
+            activeIndex === 1 && "bg-fulvous"
           }`}
           onClick={() => setActiveIndex(1)}
         >
@@ -49,7 +49,7 @@ const OurServices = () => {
           <div className="flex flex-col gap-2 flex-1 justify-center">
             <div className="flex gap-4 items-center">
               <div className="p-2 rounded-full bg-black">
-                <PeopleOutlineIcon className="text-yellow" />
+                <PeopleOutlineIcon className="text-fulvous" />
               </div>
               <Typography fontSize={14}>
                 Passengers : {currentData.passengers}
@@ -57,7 +57,7 @@ const OurServices = () => {
             </div>
             <div className="flex gap-4 items-center">
               <div className="p-2 rounded-full bg-black">
-                <LuggageIcon className="text-yellow" />
+                <LuggageIcon className="text-fulvous" />
               </div>
               <Typography fontSize={14}>
                 Luggage Carry : {currentData.luggageCarry}
@@ -65,7 +65,7 @@ const OurServices = () => {
             </div>
             <div className="flex gap-4 items-center">
               <div className="p-2 rounded-full bg-black">
-                <StadiumIcon className="text-yellow" />
+                <StadiumIcon className="text-fulvous" />
               </div>
               <Typography fontSize={14}>
                 Heated Seats : {currentData.heatedSeats}
@@ -73,7 +73,7 @@ const OurServices = () => {
             </div>
             <div className="flex gap-4 items-center">
               <div className="p-2 rounded-full bg-black">
-                <AcUnitIcon className="text-yellow" />
+                <AcUnitIcon className="text-fulvous" />
               </div>
               <Typography fontSize={14}>
                 Air Condition : {currentData.airCondition}

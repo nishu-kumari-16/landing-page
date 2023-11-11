@@ -26,10 +26,10 @@ const Header = () => {
         onClick={() => showCloseIcon && setMenuOpen(false)}
       >
         <Typography
-          color={
-            pathname === route.path ? colorPalette.gray : colorPalette.black
-          }
-          className={`hover:cursor-pointer hover:text-[#656565]`}
+          color={colorPalette.black}
+          className={`${
+            pathname === route.path && "underline"
+          } hover:cursor-pointer hover:text-[#656565]`}
         >
           {route.name}
         </Typography>

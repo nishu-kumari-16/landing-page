@@ -8,7 +8,12 @@ const Input = ({
 }: any) => {
   return (
     <div className={`flex flex-col gap-2 ${className} justify-end rounded-md`}>
-      {error && <div className="text-red text-xs">{error}</div>}
+      {(label || error) && (
+        <div className="flex justify-between">
+          {label && <div className="text-sm">{label}</div>}
+          {error && <div className="text-red text-xs">{error}</div>}
+        </div>
+      )}
       <input
         {...register?.(name)}
         className={`border border-darkGray outline-none !text-xs rounded-md py-2 px-4 ${

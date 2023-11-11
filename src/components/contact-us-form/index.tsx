@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../input";
 import Button from "../button";
+import { toast } from "react-toastify";
 
 const yupSchema = yup
   .object({
@@ -32,8 +33,13 @@ const ContactUsForm = () => {
 
   const onSubmit: SubmitHandler<any> = (data) => {
     console.log(data, 1);
+    toast("🦄Successfully Submitted your details", {
+      type: "success",
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+    });
   };
-
   return (
     <div className="flex flex-col gap-4">
       <Typography color={colorPalette.black} fontWeight={600} fontSize={24}>
@@ -91,7 +97,7 @@ const ContactUsForm = () => {
         />
         <Button
           type="submit"
-          className="px-8 !bg-yellow !text-white !capitalize !w-fit"
+          className="px-8 !bg-fulvous !text-white !capitalize !w-fit"
         >
           Send Message
         </Button>

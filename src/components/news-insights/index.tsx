@@ -8,7 +8,7 @@ const NewsAndInsights = () => {
     <FadeInWhenVisible>
       <div className="px-4 tablet:px-[8rem] flex flex-col gap-6 flex-1 mt-12 z-10 bg-mistGray py-[4rem] relative">
         <div className="flex flex-col gap-2 justify-center items-center">
-          <Typography fontSize={14} className="text-yellow !font-semibold">
+          <Typography fontSize={14} className="text-fulvous !font-semibold">
             {` /// RECENT POSTS!`}
           </Typography>
           <div className="text-black font-bold text-[2rem] text-center relative z-[3]">

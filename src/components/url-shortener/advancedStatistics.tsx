@@ -7,7 +7,7 @@ import FadeInWhenVisible from "../fade-in-visible";
 const Card = ({ title, description, icon }: any) => {
   return (
     <div className="flex flex-col p-8 gap-4 bg-white rounded-md flex-1 relative shadow-md">
-      <div className="rounded-[50%] w-[4rem] h-[4rem] p-3 bg-yellow absolute  top-[-2rem] flex items-center justify-center ">
+      <div className="rounded-[50%] w-[4rem] h-[4rem] p-3 bg-fulvous absolute  top-[-2rem] flex items-center justify-center ">
         <img src={icon} alt="icon" className="w-[2rem] h-[2rem]" />
       </div>
       <div className="text-verDarkViolet font-extrabold mt-[2rem]">{title}</div>
@@ -44,7 +44,7 @@ const AdvancedStatistics = () => {
     <FadeInWhenVisible>
       <div className="px-[1.5rem] tablet:px-[6rem] flex flex-col gap-6 flex-1 my-12 z-10 bg-darkViolet pt-6">
         <div className="flex flex-col gap-2 justify-center items-center">
-          <Typography fontSize={14} className="text-yellow !font-semibold">
+          <Typography fontSize={14} className="text-fulvous !font-semibold">
             {` /// WHAT WE OFFER`}
           </Typography>
           <div className="text-white font-bold text-[2rem] text-center relative z-[3]">

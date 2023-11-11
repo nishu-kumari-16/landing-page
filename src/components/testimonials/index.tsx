@@ -43,7 +43,7 @@ const Testimonials = () => {
         <div className="grid grid-cols-1 gap-8 tablet:grid-cols-2 tablet:items-center tablet:gap-16">
           <div className="max-w- ltr:sm:text-left rtl:sm:text-right gap-4 flex flex-col pt-12 pb-12">
             <Typography
-              className="text-yellow "
+              className="text-fulvous "
               fontSize={13}
             >{`/// CLIENTS TESTIMONIAL`}</Typography>
             <Typography fontSize={24}>Ridek Passenger Reviews...</Typography>
@@ -70,7 +70,7 @@ const Testimonials = () => {
                         keenSlider.current?.moveToIdx(idx);
                       }}
                       className={`border-none w-2 h-2 bg-gray p-1 mx-1 rounded-full cursor-pointer z-10 ${
-                        currentSlide === idx && " !bg-yellow"
+                        currentSlide === idx && " !bg-fulvous"
                       }`}
                     ></button>
                   );

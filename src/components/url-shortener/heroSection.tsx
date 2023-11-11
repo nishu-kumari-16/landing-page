@@ -29,7 +29,7 @@ const HeroSection = () => {
           </div>
 
           <button
-            className="text-white text-sm bg-yellow border-none rounded-sm px-12 py-4 w-fit mt-4
+            className="text-white text-sm bg-fulvous border-none rounded-sm px-12 py-4 w-fit mt-4
              font-medium hover:cursor-pointer hover:opacity-[0.8]"
           >
             Book Now

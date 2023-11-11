@@ -55,10 +55,10 @@ const HeaderLarge = () => {
           </Box>
         </Box>
         <Box className="flex  w-[calc(70%+30px)] self-end absolute right-0 top-[8rem] overflow-hidden z-10">
-          <div className="z-[1] m-auto h-14 w-24 bg-yellow rotate-[70deg] mr-[-3rem]"></div>
-          <div className="flex gap-6 w-[calc(100%-30px)] bg-yellow  ">
+          <div className="z-[1] m-auto h-14 w-24 bg-fulvous rotate-[70deg] mr-[-3rem]"></div>
+          <div className="flex gap-6 w-[calc(100%-30px)] bg-fulvous  ">
             {renderRoutes()}
-            <div className="flex flex-1 gap-4 justify-end items-center bg-yellow">
+            <div className="flex flex-1 gap-4 justify-end items-center bg-fulvous">
               <SearchIcon className="text-white" />
               <MenuIcon className="text-white" />
               <Button className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]">
@@ -68,7 +68,7 @@ const HeaderLarge = () => {
           </div>
         </Box>
         <Box className="flex w-full self-end absolute right-[6.95rem] top-[12rem]">
-          <div className="flex m-auto h-40 w-60 bg-yellow rotate-[-70deg] mr-[-3rem]">
+          <div className="flex m-auto h-40 w-60 bg-fulvous rotate-[-70deg] mr-[-3rem]">
             <div className=" h-12 w-60 bg-black mr-[-3rem] self-end"></div>
           </div>
         </Box>

@@ -7,7 +7,7 @@ const OurExpertDrivers = () => {
     <div className="flex flex-col gap-6 justify-center items-center px-4 tablet:gap-6 tablet:px-[8rem] py-[5rem]">
       <Typography
         fontSize={14}
-        color={colorPalette.yellow}
+        color={colorPalette.fulvous}
       >{`/// LETS GO WITH US!`}</Typography>
       <Typography fontSize={24} color={colorPalette.black}>
         Our Expert Drivers
@@ -32,7 +32,7 @@ const OurExpertDrivers = () => {
             />
             <Typography
               fontSize={14}
-              className="py-2 mx-6 rounded-md bg-yellow absolute bottom-[-1rem] left-4 right-4 text-center"
+              className="py-2 mx-6 rounded-md bg-fulvous absolute bottom-[-1rem] left-4 right-4 text-center"
             >
               {data.name}
             </Typography>

@@ -6,6 +6,8 @@ import Loader from "./components/loader-component";
 import Home from "./pages/home";
 import ContactUs from "./pages/contact-us";
 import Careers from "./pages/careers";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -44,7 +46,12 @@ const router = createBrowserRouter([
   },
 ]);
 
-root.render(<RouterProvider router={router} />);
+root.render(
+  <>
+    <RouterProvider router={router} />
+    <ToastContainer />
+  </>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

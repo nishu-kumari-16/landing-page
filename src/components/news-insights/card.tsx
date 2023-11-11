@@ -24,7 +24,7 @@ const NewsCard = ({
       <div className="flex flex-col gap-4 px-4 pb-4 relative">
         <Typography
           fontSize={14}
-          className="absolute !uppercase top-[-3.25rem] left-0 px-4 py-2 text-white z-2 bg-yellow"
+          className="absolute !uppercase top-[-3.25rem] left-0 px-4 py-2 text-white z-2 bg-fulvous"
         >
           {type}
         </Typography>
@@ -33,14 +33,14 @@ const NewsCard = ({
             fontSize={12}
             className=" text-black flex gap-1 items-center"
           >
-            <CalendarMonthOutlined className="!w-4 !h-4 text-yellow" />
+            <CalendarMonthOutlined className="!w-4 !h-4 text-fulvous" />
             {date}
           </Typography>
           <Typography
             fontSize={12}
             className=" text-black flex gap-1 items-center"
           >
-            <Person2Outlined className="!w-4 !h-4 text-yellow" />
+            <Person2Outlined className="!w-4 !h-4 text-fulvous" />
             {author}
           </Typography>
         </div>
@@ -73,7 +73,7 @@ const NewsCard = ({
           )}
         </AnimatePresence>
         <div
-          className="text-yellow py-1 cursor-pointer"
+          className="text-fulvous py-1 cursor-pointer"
           onClick={() => setExpanded(!expanded)}
         >
           Read More...
