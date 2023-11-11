@@ -32,7 +32,6 @@ const ContactUsForm = () => {
   } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onBlur" });
 
   const onSubmit: SubmitHandler<any> = (data) => {
-    console.log(data, 1);
     toast("🦄Successfully Submitted your details", {
       type: "success",
       position: "top-center",

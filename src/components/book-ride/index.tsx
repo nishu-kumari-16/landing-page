@@ -9,8 +9,49 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import MuiInput from "../input/muiInput";
+import { SubmitHandler, useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
+
+const yupSchema = yup
+  .object({
+    name: yup.string().required("Name is required"),
+    category: yup.string().required("Category is required"),
+    startDestination: yup.string().required("Category is required"),
+    endDestination: yup.string().required("Category is required"),
+    date: yup.string().required("Date is required"),
+    time: yup.string().required("Time is required"),
+    personCount: yup.string().required("This field is required"),
+    email: yup
+      .string()
+      .email("Please enter valid email")
+      .required("Email is required"),
+    phone: yup
+      .string()
+      .max(10, "Please enter valid mobile number")
+      .min(10, "Please enter valid mobile number")
+      .required("Mobile number is required"),
+    message: yup.string().required("Message is required"),
+  })
+  .required();
 
 const BookYourTaxiRide = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onBlur" });
+
+  const onSubmit: SubmitHandler<any> = (data) => {
+    toast("🦄Successfully Submitted your details", {
+      type: "success",
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+    });
+  };
+
   return (
     <FadeInWhenVisible>
       <div className="flex flex-col gap-6  mt-[-5rem] mx-[1.5rem] tablet:mx-[6rem]  overflow-hidden ">
@@ -22,61 +63,86 @@ const BookYourTaxiRide = () => {
             <Typography className="text-white !font-bold" fontSize={36}>
               Book Your Taxi Ride
             </Typography>
-            <div className="flex gap-6 justify-end flex-col tablet:flex-row">
-              <MuiInput
-                endAdornment={<PersonIcon className="text-fulvous " />}
-                placeholder="Enter name"
-                className="!bg-[#575859]"
-              />
-              <MuiInput
-                endAdornment={<EmailOutlinedIcon className="text-fulvous " />}
-                placeholder="Enter email"
-              />
-              <MuiInput
-                endAdornment={<SellOutlinedIcon className="text-fulvous " />}
-                placeholder="Enter category"
-              />
-            </div>
-            <div className="flex gap-6 justify-end  flex-col tablet:flex-row">
-              <MuiInput
-                endAdornment={<PeopleOutlinedIcon className="text-fulvous " />}
-                placeholder="No of person"
-              />
-              <MuiInput
-                endAdornment={
-                  <LocationOnOutlinedIcon className="text-fulvous " />
-                }
-                placeholder="Start Destination"
-              />
-              <MuiInput
-                endAdornment={
-                  <LocationOnOutlinedIcon className="text-fulvous " />
-                }
-                placeholder="End Destination"
-              />
-            </div>
-            <div className="flex gap-6 justify-end  flex-col tablet:flex-row">
-              <MuiInput
-                endAdornment={
-                  <CalendarMonthOutlinedIcon className="text-fulvous " />
-                }
-                type="date"
-                placeholder="Enter Date"
-              />
-              <MuiInput
-                endAdornment={
-                  <AccessTimeOutlinedIcon className="text-fulvous " />
-                }
-                placeholder="Enter Time"
-              />
-              <Button
-                variant="contained"
-                className="!bg-fulvous  !capitalize flex-1"
-              >
-                Book your Taxi
-              </Button>
-            </div>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-wrap flex-col gap-8 self-end px-6 z-[3]"
+            >
+              <div className="flex gap-6 justify-end flex-col tablet:flex-row">
+                <MuiInput
+                  endAdornment={<PersonIcon className="text-fulvous " />}
+                  placeholder="Enter name"
+                  {...register?.("name")}
+                  errors={errors.name?.message?.toString()}
+                />
+                <MuiInput
+                  endAdornment={<EmailOutlinedIcon className="text-fulvous " />}
+                  placeholder="Enter email"
+                  {...register?.("email")}
+                  errors={errors.email?.message?.toString()}
+                />
+                <MuiInput
+                  endAdornment={<SellOutlinedIcon className="text-fulvous " />}
+                  placeholder="Enter category"
+                  {...register?.("category")}
+                  errors={errors.category?.message?.toString()}
+                />
+              </div>
+              <div className="flex gap-6 justify-end  flex-col tablet:flex-row">
+                <MuiInput
+                  endAdornment={
+                    <PeopleOutlinedIcon className="text-fulvous " />
+                  }
+                  errors={errors.personCount?.message?.toString()}
+                  placeholder="No of person"
+                  type="number"
+                  {...register?.("personCount")}
+                />
+                <MuiInput
+                  endAdornment={
+                    <LocationOnOutlinedIcon className="text-fulvous " />
+                  }
+                  errors={errors.startDestination?.message?.toString()}
+                  {...register?.("startDestination")}
+                  placeholder="Start Destination"
+                />
+                <MuiInput
+                  endAdornment={
+                    <LocationOnOutlinedIcon className="text-fulvous " />
+                  }
+                  errors={errors.endDestination?.message?.toString()}
+                  {...register?.("endDestination")}
+                  placeholder="End Destination"
+                />
+              </div>
+              <div className="flex gap-6 justify-end  flex-col tablet:flex-row">
+                <MuiInput
+                  endAdornment={
+                    <CalendarMonthOutlinedIcon className="text-fulvous " />
+                  }
+                  type="date"
+                  {...register?.("date")}
+                  errors={errors.date?.message?.toString()}
+                  placeholder="Enter Date"
+                />
+                <MuiInput
+                  endAdornment={
+                    <AccessTimeOutlinedIcon className="text-fulvous " />
+                  }
+                  placeholder="Enter Time"
+                  errors={errors.time?.message?.toString()}
+                  {...register?.("time")}
+                />
+                <Button
+                  variant="contained"
+                  type="submit"
+                  className="!bg-fulvous  !capitalize flex-1"
+                >
+                  Book your Taxi
+                </Button>
+              </div>
+            </form>
           </div>
+
           <div className="absolute top-0 left-0 w-[30%] bottom-0 h-full bg-fulvous"></div>
           <img
             src={Car}

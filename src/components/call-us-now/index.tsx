@@ -25,7 +25,7 @@ const CallUsNow = () => {
             <Phone className="text-fulvous " />
           </div>
           <div className="flex flex-col gap-1">
-            <Typography fontSize={10} color={colorPalette.white}>
+            <Typography fontSize={12} color={colorPalette.white}>
               Call For Taxi
             </Typography>
             <Typography fontSize={20} color={colorPalette.fulvous}>

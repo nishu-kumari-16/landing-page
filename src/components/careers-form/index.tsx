@@ -22,7 +22,8 @@ const yupSchema = yup
       .max(10, "Please enter valid mobile number")
       .min(10, "Please enter valid mobile number")
       .required("Mobile number is required"),
-
+    gender: yup.string().required("Gender is required"),
+    experienceLevel: yup.string().required("Experience Level is required"),
     resume: yup.mixed().required("Resume is required"),
   })
   .required();
@@ -36,7 +37,6 @@ const CareersForm = ({ isOpen, onClose, job }: any) => {
   } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onSubmit" });
 
   const onSubmit: SubmitHandler<any> = (data) => {
-    console.log(data, "applyForm");
     onClose && onClose();
     toast("🦄Successfully Applied", {
       type: "success",
@@ -102,6 +102,66 @@ const CareersForm = ({ isOpen, onClose, job }: any) => {
             className="flex-1"
             label="Email"
           />
+          <div className="flex flex-col gap-2">
+            <div className="flex justify-between">
+              <div className="text-sm !font-semibold">Gender</div>
+              {errors.gender?.message?.toString() && (
+                <div className="text-red text-xs">
+                  {errors.gender?.message?.toString()}
+                </div>
+              )}
+            </div>
+            <div className="flex gap-3">
+              <div className="flex gap-2 items-center">
+                <input
+                  {...register("gender")}
+                  type="radio"
+                  value="Male"
+                  className="!text-black"
+                />
+                <Typography fontSize={14}>Male</Typography>
+              </div>
+              <div className="flex gap-2 items-center">
+                <input
+                  {...register("gender")}
+                  type="radio"
+                  value="Female"
+                  className="!text-black"
+                />
+                <Typography fontSize={14}>Female</Typography>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="flex justify-between">
+              <div className="text-sm !font-semibold">Experience Level</div>
+              {errors.experienceLevel?.message?.toString() && (
+                <div className="text-red text-xs">
+                  {errors.experienceLevel?.message?.toString()}
+                </div>
+              )}
+            </div>
+            <div className="flex gap-3">
+              <div className="flex gap-2 items-center">
+                <input
+                  {...register("experience")}
+                  type="radio"
+                  value="Fresher"
+                  className="!text-black"
+                />
+                <Typography fontSize={14}>Fresher</Typography>
+              </div>
+              <div className="flex gap-2 items-center">
+                <input
+                  {...register("experience")}
+                  type="radio"
+                  value="Experienced"
+                  className="!text-black"
+                />
+                <Typography fontSize={14}>Experienced</Typography>
+              </div>
+            </div>
+          </div>
           <Input
             name="job"
             register={register}

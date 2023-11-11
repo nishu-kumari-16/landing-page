@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "../header";
-import Footer from "../url-shortener/footer";
-import HeroSection from "../hero-section";
 import Button from "../button";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import HeaderLarge from "../header-large";
 import { useLocation } from "react-router-dom";
+import Footer from "../footer";
 
 const Layout = ({ children }: any) => {
   const ref = useRef<HTMLDivElement>(null);
