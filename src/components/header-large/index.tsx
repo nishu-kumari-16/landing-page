@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import AppLogoImg from "../../assets/icons/logo.png";
+import AppLogoImg from "../../assets/icons/app-logo.png";
 import { headerLargeData } from "./meta";
 import colorPalette from "../../helpers/color-palette";
 import TopBanner from "../top-banner";
@@ -33,10 +33,7 @@ const HeaderLarge = () => {
       <Box className="flex flex-col px-[8rem] py-4 z-[3]">
         <Box className="flex justify-between pb-6">
           <Box className="flex gap-1 items-center">
-            <img src={AppLogoImg} alt="logo" />
-            <Typography className="!font-bold text-darkViolet !text-2xl">
-              AppName
-            </Typography>
+            <img src={AppLogoImg} alt="logo" className="max-w-[170px]" />
           </Box>
           <Box className="flex gap-6 items-center">
             {headerLargeData.infoData.map((data, index) => (
@@ -61,7 +58,14 @@ const HeaderLarge = () => {
             <div className="flex flex-1 gap-4 justify-end items-center bg-fulvous">
               <SearchIcon className="text-white" />
               <MenuIcon className="text-white" />
-              <Button className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]">
+              <Button
+                className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]"
+                onClick={() =>
+                  document
+                    .getElementById("call-us-now")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
                 Book a Taxi
               </Button>
             </div>

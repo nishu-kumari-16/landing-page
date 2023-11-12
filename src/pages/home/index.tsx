@@ -1,7 +1,6 @@
 import BookYourTaxiRide from "../../components/book-ride";
 import CallUsNow from "../../components/call-us-now";
 import FeelYourJourney from "../../components/feel-your-journey";
-import GetInTouch from "../../components/get-in-touch";
 import Layout from "../../components/layout";
 import OurExpertDrivers from "../../components/our-expert-drivers";
 import OurServices from "../../components/our-services";
@@ -26,7 +25,6 @@ const Home = () => {
       <FeelYourJourney />
       <OurExpertDrivers />
       <NewsAndInsights />
-      <GetInTouch />
     </Layout>
   );
 };

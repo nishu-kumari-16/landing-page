@@ -8,6 +8,8 @@ import ContactUs from "./pages/contact-us";
 import Careers from "./pages/careers";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AboutUs from "./pages/about-us";
+import JoinUsPage from "./pages/join-us-page";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: "about-us",
-    element: <div>About us</div>,
+    element: <AboutUs />,
     loader: () => <Loader />,
   },
   {
@@ -35,8 +37,8 @@ const router = createBrowserRouter([
     loader: () => <Loader />,
   },
   {
-    path: "services",
-    element: <div>Services</div>,
+    path: "join-us",
+    element: <JoinUsPage />,
     loader: () => <Loader />,
   },
   {

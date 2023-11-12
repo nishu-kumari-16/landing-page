@@ -1,4 +1,4 @@
-import AppLogoImg from "../../assets/icons/logo.png";
+import AppLogoImg from "../../assets/icons/app-logo.png";
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -63,8 +63,7 @@ const Footer = () => {
       <div className="flex flex-col gap-4 flex-1 text-center tablet:text-left">
         <div className="flex relative gap-6 flex-wrap tablet:flex-row flex-col ">
           <div className="pr-4 flex items-center tablet:pl-[8rem] pl-4 my-[1.5rem] tablet:my-[3rem] text-white gap-1 text-[1.5rem] border-r-lightGray border-r-0 tablet:border-r-2 font-semibold">
-            <img src={AppLogoImg} alt="app-logo" className="w-8 h-8" />
-            GoVaahan
+            <img src={AppLogoImg} alt="app-logo" className="max-w-[170px]" />
           </div>
           <Typography
             fontSize={12}
@@ -74,7 +73,7 @@ const Footer = () => {
             We successfully cope with tasks of varying complexity, provide
             long-term guarantees and regularly master technologies.
           </Typography>
-          <div className="flex flex-1 relative mt-[-1rem] bg-fulvous items-center gap-4 h-fit py-6 px-[3rem]">
+          <div className="flex flex-1 relative mt-[-1rem] bg-fulvous items-center gap-4 h-fit py-6 px-[3rem] z-10">
             <WifiCalling3Icon className="text-white " />
             <div className="flex flex-col">
               <Typography fontSize={12} color={colorPalette.white}>

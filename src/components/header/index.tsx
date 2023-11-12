@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import AppLogoImg from "../../assets/icons/logo.png";
+import AppLogoImg from "../../assets/icons/app-logo.png";
 import { appRoutes } from "./meta";
 import colorPalette from "../..//helpers/color-palette";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -101,12 +101,7 @@ const Header = () => {
             <MenuIcon />
           </Box>
           <Box className="flex gap-1 items-center">
-            <img src={AppLogoImg} alt="logo" />
-            {width > 500 && (
-              <Typography className="!font-bold text-darkViolet !text-2xl">
-                AppName
-              </Typography>
-            )}
+            <img src={AppLogoImg} alt="logo" className="max-w-[170px]" />
           </Box>
           <Box
             className={` gap-11 items-center justify-center flex-1
@@ -119,7 +114,14 @@ const Header = () => {
           <div className="flex gap-4 justify-end items-center ">
             <SearchIcon className="text-darkGray" />
             <MenuIcon className="text-darkGray" />
-            <Button className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]">
+            <Button
+              className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]"
+              onClick={() =>
+                document
+                  .getElementById("call-us-now")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
               Book a Taxi
             </Button>
           </div>

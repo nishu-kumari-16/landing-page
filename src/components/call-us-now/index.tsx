@@ -6,7 +6,10 @@ import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
 
 const CallUsNow = () => {
   return (
-    <div className="flex px-4 tablet:px-[8rem] bg-black py-[5rem] relative">
+    <div
+      className="flex px-4 tablet:px-[8rem] bg-black py-[5rem] relative"
+      id="call-us-now"
+    >
       <div className="flex flex-col gap-4 w-full tablet:w-[40%] z-[4]">
         <Typography fontSize={28} color={colorPalette.white} fontWeight={600}>
           Call Us Now <span className="text-fulvous">Book Your Taxi </span>
