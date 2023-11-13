@@ -32,7 +32,7 @@ const GetApp = () => {
           ))}
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 z-[12]">
           <PlayStore
             className="cursor-pointer"
             onClick={() =>
