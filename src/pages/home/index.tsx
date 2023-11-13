@@ -9,6 +9,8 @@ import WhatWeOffer from "../../components/what-we-offer";
 import HeroSection from "../../components/hero-section";
 import GetApp from "../../components/get-app";
 import NewsAndInsights from "../../components/news-insights";
+import AchievementsSection from "../../components/achievements-section";
+import BecomePartner from "../../components/become-partner";
 
 const Home = () => {
   return (
@@ -17,6 +19,7 @@ const Home = () => {
       <div className="bg-white h-fit pb-[4rem] flex flex-col gap-[4rem]">
         <BookYourTaxiRide />
       </div>
+      <AchievementsSection />
       <WhatWeOffer />
       <CallUsNow />
       <Testimonials />
@@ -25,6 +28,7 @@ const Home = () => {
       <FeelYourJourney />
       <OurExpertDrivers />
       <NewsAndInsights />
+      <BecomePartner />
     </Layout>
   );
 };

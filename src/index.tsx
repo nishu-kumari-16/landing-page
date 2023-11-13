@@ -10,6 +10,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AboutUs from "./pages/about-us";
 import JoinUsPage from "./pages/join-us-page";
+import PrivacyPolicy from "./pages/privacy-policy";
+import TermsOfUse from "./pages/terms-of-use";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -44,6 +46,16 @@ const router = createBrowserRouter([
   {
     path: "contact",
     element: <ContactUs />,
+    loader: () => <Loader />,
+  },
+  {
+    path: "privacy-policy",
+    element: <PrivacyPolicy />,
+    loader: () => <Loader />,
+  },
+  {
+    path: "terms-of-use",
+    element: <TermsOfUse />,
     loader: () => <Loader />,
   },
 ]);

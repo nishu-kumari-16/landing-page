@@ -6,19 +6,19 @@ export const headerLargeData = {
   infoData: [
     {
       name: "Call Us Now",
-      value: "768-878-878",
+      value: "840-917-2925",
       icon: <WifiCalling3Icon className="text-fulvous !w-[2rem] !h-[2rem]" />,
     },
     {
       name: "Email Now",
-      value: "info.hgfag@gmail.com",
+      value: "help@govahan.com",
       icon: (
         <MarkEmailUnreadIcon className="text-fulvous  !w-[2rem] !h-[2rem]" />
       ),
     },
     {
-      name: "Hawk street",
-      value: "New York, USA-2386",
+      name: "Near NTPC Thermal Power, Harchnda Road Railway Crossing Kanti",
+      value: "Muzaffarpur, Bihar 843109",
       icon: <LocationOnIcon className="text-fulvous  !w-[2rem] !h-[2rem]" />,
     },
   ],

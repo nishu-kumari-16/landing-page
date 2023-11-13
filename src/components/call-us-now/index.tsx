@@ -32,7 +32,7 @@ const CallUsNow = () => {
               Call For Taxi
             </Typography>
             <Typography fontSize={20} color={colorPalette.fulvous}>
-              5267-214-392
+              840-917-2925
             </Typography>
           </div>
         </div>

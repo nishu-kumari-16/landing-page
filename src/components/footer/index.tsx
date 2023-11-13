@@ -1,4 +1,5 @@
 import AppLogoImg from "../../assets/icons/app-logo.png";
+import FooterBg from "../../assets/icons/footer-bg.jpg";
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -21,9 +22,9 @@ const footerLinks = [
     links: [
       { name: "Taxi Booking", path: "#" },
       { name: "Help center", path: "#" },
-      { name: "Privacy and Policy", path: "#" },
-      { name: "Terms of Use", path: "#" },
-      { name: "Contact Us", path: "#" },
+      { name: "Privacy and Policy", path: "/privacy-policy" },
+      { name: "Terms of Use", path: "/terms-of-use" },
+      { name: "Contact Us", path: "/contact" },
     ],
   },
   {
@@ -31,9 +32,10 @@ const footerLinks = [
     links: [
       {
         text: "Location:",
-        subtext: "183 Chariot Plaza, San Francisco, MT 09514",
+        subtext:
+          "Near NTPC Thermal Power, Harchnda Road Railway Crossing Kanti, Muzaffarpur, Bihar 843109",
       },
-      { text: "Join Us:", subtext: "govaahan@gmail.com" },
+      { text: "Join Us:", subtext: "help@govahan.com" },
     ],
   },
   {
@@ -59,8 +61,13 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <div className="flex  bg-black justify-center tablet:justify-normal">
-      <div className="flex flex-col gap-4 flex-1 text-center tablet:text-left">
+    <div className="flex  bg-black justify-center tablet:justify-normal relative">
+      <img
+        src={FooterBg}
+        className="absolute left-0 right-0 bottom-0 "
+        alt="footer-bg"
+      />
+      <div className="flex flex-col gap-4 flex-1 text-center tablet:text-left z-[2] bg-[rgba(0,0,0,0.4)]">
         <div className="flex relative gap-6 flex-wrap tablet:flex-row flex-col ">
           <div className="pr-4 flex items-center tablet:pl-[8rem] pl-4 my-[1.5rem] tablet:my-[3rem] text-white gap-1 text-[1.5rem] border-r-lightGray border-r-0 tablet:border-r-2 font-semibold">
             <img src={AppLogoImg} alt="app-logo" className="max-w-[170px]" />
@@ -73,7 +80,7 @@ const Footer = () => {
             We successfully cope with tasks of varying complexity, provide
             long-term guarantees and regularly master technologies.
           </Typography>
-          <div className="flex flex-1 relative mt-[-1rem] bg-fulvous items-center gap-4 h-fit py-6 px-[3rem] z-10">
+          <div className="flex flex-1 relative mt-[-1rem] bg-fulvous items-center gap-4 h-fit py-6 px-[3rem] z-[11]">
             <WifiCalling3Icon className="text-white " />
             <div className="flex flex-col">
               <Typography fontSize={12} color={colorPalette.white}>
@@ -84,7 +91,7 @@ const Footer = () => {
                 fontWeight={600}
                 color={colorPalette.black}
               >
-                5267-214-392
+                840-917-2925
               </Typography>
             </div>
           </div>
