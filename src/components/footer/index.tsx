@@ -62,11 +62,6 @@ const footerLinks = [
 const Footer = () => {
   return (
     <div className="flex  bg-black justify-center tablet:justify-normal relative">
-      {/* <img
-        src={FooterBg}
-        className="absolute left-0 right-0 bottom-0 "
-        alt="footer-bg"
-      /> */}
       <video
         autoPlay
         muted
@@ -75,7 +70,7 @@ const Footer = () => {
       >
         <source src={FooterVideo} type="video/mp4" />
       </video>
-      <div className="flex flex-col gap-4 flex-1 text-center tablet:text-left z-[2] bg-[rgba(0,0,0,0.4)]">
+      <div className="flex flex-col gap-4 flex-1 text-center tablet:text-left z-[2] bg-[rgba(0,0,0,0.5)]">
         <div className="flex relative gap-6 flex-wrap tablet:flex-row flex-col ">
           <div className="pr-4 flex items-center tablet:pl-[8rem] pl-4 my-[1.5rem] tablet:my-[3rem] text-white gap-1 text-[1.5rem] border-r-lightGray border-r-0 tablet:border-r-2 font-semibold">
             <img src={AppLogoImg} alt="app-logo" className="max-w-[170px]" />

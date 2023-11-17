@@ -1,6 +1,15 @@
 import FadeInWhenVisible from "../fade-in-visible";
 import Car from "../../assets/icons/car.png";
-import { Button, Grid, Typography } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  Grid,
+  Input,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 import PersonIcon from "@mui/icons-material/PersonOutlineOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -40,6 +49,7 @@ const BookYourTaxiRide = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onSubmit" });
 
@@ -130,14 +140,37 @@ const BookYourTaxiRide = () => {
                   errors={errors.date?.message?.toString()}
                   placeholder="Enter Date"
                 />
-                <MuiInput
-                  endAdornment={
-                    <AccessTimeOutlinedIcon className="text-fulvous " />
-                  }
+                <Grid
+                  item
+                  className="flex-[2] flex !flex-col gap-4 !text-left"
+                  xs={3}
+                  sm={3}
+                  md={4}
+                >
+                  <div className="relative">
+                    {!watch("vehicleType") && (
+                      <div className="absolute top-1 z-[2] text-mutedGray left-4 !font-serif">
+                        Enter Time
+                      </div>
+                    )}
+                    <Select
+                      {...register("vehicleType")}
+                      displayEmpty
+                      className="max-h-[40px] w-full  !bg-[#575859] !text-white"
+                      endAdornment={
+                        <AccessTimeOutlinedIcon className="text-fulvous " />
+                      }
+                    >
+                      <MenuItem value="Cab">Cab</MenuItem>
+                      <MenuItem value="Loader">Loader</MenuItem>
+                    </Select>
+                  </div>
+                </Grid>
+                {/* <MuiInput
                   placeholder="Enter Time"
                   errors={errors.time?.message?.toString()}
                   {...register?.("time")}
-                />
+                /> */}
                 <Grid
                   item
                   className="flex-[2] flex !flex-col gap-4 !text-left"

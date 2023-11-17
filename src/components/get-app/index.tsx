@@ -4,10 +4,8 @@ import Illustration from "../../assets/icons/download-app.png";
 import { ReactComponent as PlayStore } from "../../assets/icons/play-store.svg";
 import { ReactComponent as AppleStore } from "../../assets/icons/apple-store.svg";
 import colorPalette from "../../helpers/color-palette";
-import { Link, useNavigate } from "react-router-dom";
 
 const GetApp = () => {
-  const navigate = useNavigate();
   return (
     <div className="flex px-4 tablet:px-[8rem] py-[5rem] relative">
       <div className="flex flex-col gap-4 w-full tablet:w-[40%]">
