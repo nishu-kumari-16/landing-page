@@ -35,7 +35,6 @@ const ExcelData: React.FC = () => {
       const sheetData = XLSX.utils.sheet_to_json(worksheet, {
         raw: true,
       });
-      console.log(sheetData);
       setJsonData(sheetData as any);
     } catch (error) {
       console.error("Error fetching data:", error);

@@ -9,8 +9,8 @@ export const fetchData = async (url: string) => {
     const arrayBuffer = response.data;
 
     const array = new Uint8Array(arrayBuffer);
-    const binaryString = String.fromCharCode.apply(null, array as any);
-
+    const decoder = new TextDecoder("utf-8");
+    const binaryString = decoder.decode(array);
     /* Call XLSX */
     const workbook = XLSX.read(binaryString, {
       type: "binary",
@@ -23,7 +23,11 @@ export const fetchData = async (url: string) => {
     const sheetData = XLSX.utils.sheet_to_json(worksheet, {
       raw: true,
     });
-    return sheetData;
+    const filledRows = sheetData.filter(
+      (row: any) => row.A !== null && row.A !== undefined
+    );
+
+    return filledRows;
   } catch (error) {
     console.error("Error fetching data:", error);
     return [];

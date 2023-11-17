@@ -6,6 +6,7 @@ import { fetchData } from "../../helpers/utils";
 import { useKeenSlider } from "keen-slider/react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { ReactComponent as Loader } from "../../assets/icons/loader.svg";
 
 const NewsAndInsights = () => {
   const [sliderRef, keenSlider] = useKeenSlider<HTMLDivElement>({
@@ -78,12 +79,14 @@ const NewsAndInsights = () => {
             >
               <ArrowBackIosNewIcon className="text-white" />
             </button>
-            {newsData && (
+            {newsData ? (
               <div className="keen-slider" ref={sliderRef}>
                 {newsData?.map((data: any, index: number) => (
                   <NewsCard {...data} key={index} />
                 ))}
               </div>
+            ) : (
+              <Loader />
             )}
             <button
               onClick={() => keenSlider.current?.next()}

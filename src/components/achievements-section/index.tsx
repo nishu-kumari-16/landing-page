@@ -45,6 +45,7 @@ const AchievementsSection = () => {
               xs={5}
               sm={5}
               md={2.4}
+              key={index}
               className="flex flex-col relative"
             >
               <div

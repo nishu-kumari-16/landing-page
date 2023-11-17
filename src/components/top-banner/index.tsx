@@ -34,6 +34,7 @@ const TopBanner = () => {
               whileHover={{
                 scale: 1.15,
               }}
+              key={index}
               transition={{ scale: { type: "spring", stiffness: 500 } }}
             >
               <Link
