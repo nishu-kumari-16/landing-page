@@ -23,7 +23,7 @@ const GetApp = () => {
           We successfully cope with tasks of varying complexity, provide
           long-term guarantees and regularly master technologies
         </Typography>
-        <div className="flex gap-6">
+        <div className="flex gap-6 z-[2]">
           {metaData.map((data, index) => (
             <div className="flex gap-2 flex-col" key={index}>
               {data.image}
@@ -32,7 +32,7 @@ const GetApp = () => {
           ))}
         </div>
 
-        <div className="flex gap-4 z-[12]">
+        <div className="flex gap-4 z-[12] max-h-[64px]">
           <PlayStore
             className="cursor-pointer"
             onClick={() =>

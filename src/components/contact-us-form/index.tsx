@@ -29,7 +29,7 @@ const ContactUsForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onBlur" });
+  } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onSubmit" });
 
   const onSubmit: SubmitHandler<any> = (data) => {
     toast("🦄Successfully Submitted your details", {

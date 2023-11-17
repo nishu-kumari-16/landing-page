@@ -66,7 +66,7 @@ const HeaderLarge = () => {
                 className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]"
                 onClick={() =>
                   document
-                    .getElementById("call-us-now")
+                    .getElementById("book-ride")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >

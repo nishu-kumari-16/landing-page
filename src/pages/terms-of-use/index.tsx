@@ -1,4 +1,3 @@
-import ExcelData from "../../components/excel-poc";
 import Layout from "../../components/layout";
 
 const TermsOfUse = () => {
@@ -279,7 +278,6 @@ const TermsOfUse = () => {
           </p>
         </div>
       </div>
-      <ExcelData />
     </Layout>
   );
 };

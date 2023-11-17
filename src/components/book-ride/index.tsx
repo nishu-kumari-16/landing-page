@@ -41,7 +41,7 @@ const BookYourTaxiRide = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onBlur" });
+  } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onSubmit" });
 
   const onSubmit: SubmitHandler<any> = (data) => {
     toast("🦄Successfully Submitted your details", {
@@ -54,7 +54,10 @@ const BookYourTaxiRide = () => {
 
   return (
     <FadeInWhenVisible>
-      <div className="flex flex-col gap-6  mt-[-5rem] mx-[1.5rem] tablet:mx-[6rem]  overflow-hidden ">
+      <div
+        className="flex flex-col gap-6  mt-[-5rem] mx-[1.5rem] tablet:mx-[6rem]  overflow-hidden "
+        id="book-ride"
+      >
         <div className="flex flex-col items-center justify-center flex-1 rounded-xl relative bg-codGray h-full w-full min-h-[30rem] py-4 overflow-hidden ">
           <div className="w-[70%] flex flex-wrap flex-col gap-8 self-end px-6 z-[3]">
             <Typography className="text-fulvous !font-bold" fontSize={16}>

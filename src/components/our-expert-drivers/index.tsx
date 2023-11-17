@@ -1,10 +1,38 @@
 import { Typography } from "@mui/material";
 import colorPalette from "../../helpers/color-palette";
 import { ourDrivers } from "./meta";
+import { useKeenSlider } from "keen-slider/react";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const OurExpertDrivers = () => {
+  const [sliderRef, keenSlider] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    slides: {
+      origin: "auto",
+      perView: 4,
+      spacing: 16,
+    },
+    breakpoints: {
+      "(max-width: 900px)": {
+        slides: {
+          origin: "center",
+          perView: 3,
+          spacing: 16,
+        },
+      },
+      "(max-width: 700px)": {
+        slides: {
+          origin: "center",
+          perView: 1,
+          spacing: 16,
+        },
+      },
+    },
+  });
+
   return (
-    <div className="flex flex-col gap-6 justify-center items-center px-4 tablet:gap-6 tablet:px-[8rem] py-[5rem]">
+    <div className="flex flex-col gap-6 justify-center items-center px-8 tablet:gap-6 tablet:px-[8rem] py-[5rem]">
       <Typography
         fontSize={14}
         color={colorPalette.fulvous}
@@ -22,28 +50,45 @@ const OurExpertDrivers = () => {
         guarantees and regularly master new technologies.
       </Typography>
 
-      <div className="flex flex-wrap gap-[5rem] tablet:gap-4 tablet:flex-row flex-col">
-        {ourDrivers.map((data, index) => (
-          <div className="flex relative  flex-1 rounded-lg" key={index}>
-            <img
-              src={data.image}
-              className="h-[300px] object-cover"
-              alt="ima"
-            />
-            <Typography
-              fontSize={14}
-              className="py-2 mx-6 rounded-md bg-fulvous absolute bottom-[-1rem] left-4 right-4 text-center"
+      <div className="relative w-full">
+        <button
+          onClick={() => keenSlider.current?.prev()}
+          className=" absolute top-[45%] rounded-full z-[2] h-[3rem] min-w-[3rem] left-[-2rem] flex justify-center items-center  bg-fulvous transition  hover:text-white"
+        >
+          <ArrowBackIosNewIcon className="text-white" />
+        </button>
+        <div ref={sliderRef} className="keen-slider">
+          {ourDrivers.map((data, index: number) => (
+            <div
+              className="flex flex-col relative keen-slider__slide max-w-[500px]  flex-1 rounded-lg"
+              key={index}
             >
-              {data.name}
-            </Typography>
-            <Typography
-              fontSize={13}
-              className="py-2 mx-6 rounded-md bg-black text-white absolute bottom-[-3rem] left-8 right-8 text-center"
-            >
-              {data.vehicle}
-            </Typography>
-          </div>
-        ))}
+              <img
+                src={data.image}
+                className="h-[300px] object-cover w-full"
+                alt="img"
+              />
+              <Typography
+                fontSize={14}
+                className="py-2 rounded-md bg-fulvous !mx-4 !mt-[-1rem] text-center"
+              >
+                {data.name}
+              </Typography>
+              <Typography
+                fontSize={13}
+                className="py-2 rounded-md bg-black text-white !mx-8 !mt-[-0.5rem] text-center"
+              >
+                {data.vehicle}
+              </Typography>
+            </div>
+          ))}
+        </div>
+        <button
+          onClick={() => keenSlider.current?.next()}
+          className="rounded-full absolute right-[-2rem] top-[45%]  h-[3rem] min-w-[3rem]  bg-fulvous transition  hover:text-white"
+        >
+          <ArrowForwardIosIcon className="text-white" />
+        </button>
       </div>
     </div>
   );
