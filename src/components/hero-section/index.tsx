@@ -41,7 +41,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, x: "200vh" }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="flex-1 tablet:mr-[-40%] laptop:mr-[-10%] mr-[0] self-center h-fit z-[3] relative tablet:absolute top-0 right-0 tablet:top-[8rem] tablet:right-[-30%] w-full"
+        className="flex-1 laptop:mr-[-10%] mr-[0] self-center h-fit z-[3] relative tablet:absolute top-0 right-0 tablet:top-[8rem] tablet:right-[-30%] w-full"
       >
         <ComponentSlider components={heroSectionImages} />
       </motion.div>

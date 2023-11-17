@@ -101,7 +101,7 @@ const Header = () => {
             <MenuIcon />
           </Box>
           <Box className="flex gap-1 items-center">
-            <img src={AppLogoImg} alt="logo" className="max-w-[170px]" />
+            <img src={AppLogoImg} alt="logo" className="max-w-[100px]" />
           </Box>
           <Box
             className={` gap-11 items-center justify-center flex-1

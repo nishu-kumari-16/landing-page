@@ -9,14 +9,19 @@ import Footer from "../footer";
 const Layout = ({ children }: any) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsvisible] = useState<boolean>(false);
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 100 ? setIsvisible(true) : setIsvisible(false);
     });
+    window.addEventListener("resize", () => {
+      setWindowWidth(window.innerWidth);
+    });
     return () => {
       window.removeEventListener("scroll", () => {});
+      window.removeEventListener("resize", () => {});
     };
   }, []);
 
@@ -27,7 +32,7 @@ const Layout = ({ children }: any) => {
       className="flex flex-col h-full bg-white overflow-y-overlay overflow-x-hidden ::webkit-scrollbar-hidden"
     >
       {!isVisible &&
-      window.innerWidth > 800 &&
+      window.innerWidth > 900 &&
       ["/", "/home"].includes(pathname) ? (
         <HeaderLarge />
       ) : (

@@ -42,7 +42,8 @@ const CallUsNow = () => {
         className="w-[60%] tablet:w-[35%] absolute right-0 bottom-0 z-[2]"
         alt="man-on-phone"
       />
-      <Triangle className="absolute right-0 bottom-[-4px]  w-[10rem]" />
+      [ <Triangle className="absolute right-[-4rem] bottom-[-4px]  w-[18rem]" />
+      ]{" "}
     </div>
   );
 };

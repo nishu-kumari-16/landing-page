@@ -1,6 +1,6 @@
 import FadeInWhenVisible from "../fade-in-visible";
 import Car from "../../assets/icons/car.png";
-import { Button, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/PersonOutlineOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -67,7 +67,12 @@ const BookYourTaxiRide = () => {
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-wrap flex-col gap-8 self-end px-6 z-[3]"
             >
-              <div className="flex gap-6 justify-end flex-col tablet:flex-row">
+              <Grid
+                container
+                spacing={4}
+                columns={{ xs: 3, sm: 6, md: 12 }}
+                className=" px-4"
+              >
                 <MuiInput
                   endAdornment={<PersonIcon className="text-fulvous " />}
                   placeholder="Enter name"
@@ -86,8 +91,7 @@ const BookYourTaxiRide = () => {
                   {...register?.("category")}
                   errors={errors.category?.message?.toString()}
                 />
-              </div>
-              <div className="flex gap-6 justify-end  flex-col tablet:flex-row">
+
                 <MuiInput
                   endAdornment={
                     <PeopleOutlinedIcon className="text-fulvous " />
@@ -113,8 +117,7 @@ const BookYourTaxiRide = () => {
                   {...register?.("endDestination")}
                   placeholder="End Destination"
                 />
-              </div>
-              <div className="flex gap-6 justify-end  flex-col tablet:flex-row">
+
                 <MuiInput
                   endAdornment={
                     <CalendarMonthOutlinedIcon className="text-fulvous " />
@@ -132,14 +135,22 @@ const BookYourTaxiRide = () => {
                   errors={errors.time?.message?.toString()}
                   {...register?.("time")}
                 />
-                <Button
-                  variant="contained"
-                  type="submit"
-                  className="!bg-fulvous  !capitalize flex-1"
+                <Grid
+                  item
+                  className="flex-[2] flex !flex-col gap-4 !text-left"
+                  xs={3}
+                  sm={3}
+                  md={4}
                 >
-                  Book your Taxi
-                </Button>
-              </div>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    className="!bg-fulvous max-h-[48px]  !capitalize flex-1"
+                  >
+                    Book your Taxi
+                  </Button>
+                </Grid>
+              </Grid>
             </form>
           </div>
 

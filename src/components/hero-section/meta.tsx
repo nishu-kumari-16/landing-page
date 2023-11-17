@@ -6,7 +6,7 @@ import { ReactComponent as HeroImage3 } from "../../assets/icons/hero-illustrati
 
 export const heroSectionImages = [
   <HeroImage3
-    className="max-h-[453px] max-w-[800px] keen-slider__slide]"
+    className="max-h-[453px] max-w-[800px] keen-slider__slide"
     key={Math.random()}
   />,
   <HeroImage2
@@ -18,7 +18,7 @@ export const heroSectionImages = [
     key={Math.random()}
   />,
   <HeroImage6
-    className="max-h-[453px] max-w-[800px] keen-slider__slide]"
+    className="max-h-[453px] max-w-[800px] keen-slider__slide"
     key={Math.random()}
   />,
 ];

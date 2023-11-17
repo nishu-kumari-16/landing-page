@@ -14,10 +14,10 @@ const NewsCard = ({
 }: any) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   return (
-    <div className="flex flex-col flex-1 gap-4 rounded-md bg-white shadow-sm">
+    <div className="flex flex-col keen-slider__slide max-w-[500px]  flex-1 gap-4 rounded-md bg-white shadow-sm">
       <img
         src={image}
-        className="h-[300px] object-cover relative"
+        className="h-[200px] object-cover relative"
         alt={image}
       />
 

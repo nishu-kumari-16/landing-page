@@ -33,8 +33,8 @@ module.exports = {
     },
 
     screens: {
-      tablet: "800px",
-      laptop: "1024px",
+      tablet: "900px",
+      laptop: "1180px",
       desktop: "1280px",
     },
   },

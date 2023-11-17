@@ -13,40 +13,4 @@ export const metaData = [
     description:
       "Everything your taxi business is already here. Ridek made or taxi service companies",
   },
-  {
-    name: "Luggage Transport",
-    image: TransportImage,
-    description:
-      "Everything your taxi business is already here. Ridek made or taxi service companies",
-  },
-  {
-    name: "Dummy Transport",
-    image: TransportImage,
-    description:
-      "Everything your taxi business is already here. Ridek made or taxi service companies",
-  },
-  {
-    name: "Regular Transport",
-    image: TransportImage,
-    description:
-      "Everything your taxi business is already here. Ridek made or taxi service companies",
-  },
-  {
-    name: "Airport Transport",
-    image: TransportImage,
-    description:
-      "Everything your taxi business is already here. Ridek made or taxi service companies",
-  },
-  {
-    name: "Luggage Transport",
-    image: TransportImage,
-    description:
-      "Everything your taxi business is already here. Ridek made or taxi service companies",
-  },
-  {
-    name: "Dummy Transport",
-    image: TransportImage,
-    description:
-      "Everything your taxi business is already here. Ridek made or taxi service companies",
-  },
 ];

@@ -30,10 +30,14 @@ const HeaderLarge = () => {
     <Box className="flex flex-col w-full fixed top-0 z-[2] bg-white">
       <TopBanner />
 
-      <Box className="flex flex-col px-[8rem] py-4 z-[3]">
+      <Box className="flex flex-col laptop:px-[8rem] px-4 py-4 z-[3]">
         <Box className="flex justify-between pb-6">
           <Box className="flex gap-1 items-center">
-            <img src={AppLogoImg} alt="logo" className="max-w-[170px]" />
+            <img
+              src={AppLogoImg}
+              alt="logo"
+              className="laptop:max-w-[170px] max-w-[100px]"
+            />
           </Box>
           <Box className="flex gap-6 items-center">
             {headerLargeData.infoData.map((data, index) => (

@@ -7,7 +7,7 @@ import { useKeenSlider } from "keen-slider/react";
 
 const Card = ({ title, description, icon }: any) => {
   return (
-    <div className="flex flex-col  keen-slider__slide max-w-[400px] gap-4 bg-white rounded-md flex-1 relative  overflow-hidden pb-6">
+    <div className="flex flex-col gap-4 bg-white rounded-md flex-1 relative  overflow-hidden pb-6">
       <img src={icon} alt="icon" className="w-full h-[10rem] bg-purple" />
       <div className="text-verDarkViolet font-extrabold  px-4">{title}</div>
       <div className="text-darkGray font-medium text-xs leading-5 px-4">
@@ -24,30 +24,6 @@ const Card = ({ title, description, icon }: any) => {
 };
 
 const WhatWeOffer = () => {
-  const [sliderRef, keenSlider] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    slides: {
-      origin: "center",
-      perView: 3,
-      spacing: 16,
-    },
-    breakpoints: {
-      "(max-width: 804px)": {
-        slides: {
-          origin: "auto",
-          perView: 2,
-          spacing: 16,
-        },
-      },
-      "(max-width: 500px)": {
-        slides: {
-          origin: "auto",
-          perView: 1,
-          spacing: 16,
-        },
-      },
-    },
-  });
   return (
     <FadeInWhenVisible>
       <div className="px-[1rem] tablet:px-[8rem] flex flex-col gap-6 flex-1  z-10 bg-darkViolet pt-6 relative">
@@ -64,13 +40,7 @@ const WhatWeOffer = () => {
           </div>
         </div>
         <div className="block px-8 relative z-[2]">
-          <button
-            onClick={() => keenSlider.current?.prev()}
-            className=" absolute top-[45%] rounded-full z-[2] h-[3rem] min-w-[3rem] left-0 flex justify-center items-center  bg-fulvous transition  hover:text-white"
-          >
-            <ArrowBackIosNewIcon className="text-white" />
-          </button>
-          <div ref={sliderRef} className="keen-slider p-4">
+          <div className="flex gap-6 p-4">
             {metaData?.map((data, index) => (
               <Card
                 key={index}
@@ -80,12 +50,6 @@ const WhatWeOffer = () => {
               />
             ))}
           </div>
-          <button
-            onClick={() => keenSlider.current?.next()}
-            className="rounded-full absolute right-[-1rem] top-[45%]  h-[3rem] min-w-[3rem]  bg-fulvous transition  hover:text-white"
-          >
-            <ArrowForwardIosIcon className="text-white" />
-          </button>
         </div>
         <div className="bg-gray absolute h-[190px] bottom-0 left-0 right-0"></div>
       </div>
