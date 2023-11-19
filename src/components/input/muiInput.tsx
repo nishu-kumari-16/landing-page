@@ -12,7 +12,7 @@ const MuiInput: FC<IInputPropObj> = forwardRef((props, forwardedRef) => {
   return (
     <Grid
       item
-      className="flex-[2] flex !flex-col gap-4 !text-left"
+      className="flex-[2] flex !flex-col gap-4 !text-left justify-end"
       xs={3}
       sm={3}
       md={4}
