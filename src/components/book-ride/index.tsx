@@ -96,7 +96,7 @@ const BookYourTaxiRide = () => {
               <Grid
                 container
                 spacing={4}
-                columns={{ xs: 3, sm: 6, md: 12 }}
+                columns={{ xs: 3, sm: 6, md: 6, lg: 12 }}
                 className=" px-4"
               >
                 <MuiInput
@@ -121,7 +121,8 @@ const BookYourTaxiRide = () => {
                   className="flex-[2] flex !flex-col gap-4 !text-left justify-end"
                   xs={3}
                   sm={3}
-                  md={4}
+                  md={3}
+                  lg={4}
                 >
                   {errors.category?.message?.toString() && (
                     <div className="text-red text-xs">
@@ -183,7 +184,8 @@ const BookYourTaxiRide = () => {
                     className="flex-[2] flex !flex-col gap-4 !text-left justify-end "
                     xs={3}
                     sm={3}
-                    md={4}
+                    md={3}
+                    lg={4}
                   >
                     {errors.bodyType?.message?.toString() && (
                       <div className="text-red text-xs">
@@ -244,7 +246,8 @@ const BookYourTaxiRide = () => {
                   className="flex-[2] flex !flex-col gap-4 !text-left justify-end "
                   xs={3}
                   sm={3}
-                  md={4}
+                  md={3}
+                  lg={4}
                 >
                   {errors.time?.message?.toString() && (
                     <div className="text-red text-xs">
@@ -279,7 +282,8 @@ const BookYourTaxiRide = () => {
                   className="flex-[2] flex !flex-col gap-4 !text-left justify-end "
                   xs={3}
                   sm={3}
-                  md={4}
+                  md={3}
+                  lg={4}
                 >
                   <Button
                     variant="contained"

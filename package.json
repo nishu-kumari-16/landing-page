@@ -18,6 +18,8 @@
     "@types/react-dom": "^18.2.14",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.4",
+    "google-auth-library": "^9.2.0",
+    "google-spreadsheet": "^4.1.1",
     "keen-slider": "^6.8.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

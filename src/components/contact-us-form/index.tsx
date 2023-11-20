@@ -6,6 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../input";
 import Button from "../button";
 import { toast } from "react-toastify";
+import { ReactComponent as EllipsisLoader } from "../../assets/icons/loader.svg";
+import { useState } from "react";
 
 const yupSchema = yup
   .object({
@@ -28,16 +30,42 @@ const ContactUsForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onSubmit" });
 
-  const onSubmit: SubmitHandler<any> = (data) => {
-    toast("🦄Successfully Submitted your details", {
-      type: "success",
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: true,
-    });
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("phone", data.phone);
+    formData.append("email", data.email);
+    formData.append("message", data.message);
+    formData.append("type", "contactUs");
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyjK47PipHLjvPLvY0su8IMcByz-uSkA7_0-nn7dSnRmBaSCuDie2aY4RRnUBhKJo4clQ/exec",
+      {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      }
+    )
+      .then((res) => {
+        setLoading(false);
+        toast("Successfully Submitted your details", {
+          type: "success",
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+        });
+        reset();
+        console.log(res.text());
+      })
+      .catch((data) => console.log(data));
   };
   return (
     <div className="flex flex-col gap-4">
@@ -94,12 +122,16 @@ const ContactUsForm = () => {
             errors.message?.message?.toString() && "!border-red"
           } `}
         />
-        <Button
-          type="submit"
-          className="px-8 !bg-fulvous !text-white !capitalize !w-fit"
-        >
-          Send Message
-        </Button>
+        {loading ? (
+          <EllipsisLoader className="h-[50px]" />
+        ) : (
+          <Button
+            type="submit"
+            className="px-8 !bg-fulvous !text-white !capitalize !w-fit"
+          >
+            Send Message
+          </Button>
+        )}
       </form>
     </div>
   );

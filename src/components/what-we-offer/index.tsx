@@ -7,7 +7,7 @@ import { useKeenSlider } from "keen-slider/react";
 
 const Card = ({ title, description, icon }: any) => {
   return (
-    <div className="flex flex-col gap-4 bg-white rounded-md flex-1 relative  overflow-hidden pb-6">
+    <div className="flex flex-col gap-4 bg-white rounded-md flex-1 relative max-w-[400px]  overflow-hidden pb-6">
       <img src={icon} alt="icon" className="w-full h-[10rem] bg-purple" />
       <div className="text-verDarkViolet font-extrabold  px-4">{title}</div>
       <div className="text-darkGray font-medium text-xs leading-5 px-4">
@@ -40,7 +40,7 @@ const WhatWeOffer = () => {
           </div>
         </div>
         <div className="block px-8 relative z-[2]">
-          <div className="flex gap-6 p-4">
+          <div className="flex gap-6 p-4 justify-center tablet:flex-row flex-col">
             {metaData?.map((data, index) => (
               <Card
                 key={index}

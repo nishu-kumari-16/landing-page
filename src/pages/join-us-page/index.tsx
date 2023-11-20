@@ -21,7 +21,7 @@ const JoinUsPage = () => {
             </Typography>
           </div>
           <Button
-            className="!bg-fulvous h-[3rem] !text-white !px-8 w-fit"
+            className="!bg-fulvous h-[3rem] z-[2] !text-white !px-8 w-fit"
             onClick={() => setIsModalOpen(true)}
           >
             JOIN WITH US

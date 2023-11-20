@@ -15,7 +15,8 @@ const MuiInput: FC<IInputPropObj> = forwardRef((props, forwardedRef) => {
       className="flex-[2] flex !flex-col gap-4 !text-left justify-end"
       xs={3}
       sm={3}
-      md={4}
+      md={3}
+      lg={4}
     >
       <div className={`flex flex-col gap-2 justify-end rounded-md`}>
         {errors && <div className="text-red text-xs">{errors}</div>}

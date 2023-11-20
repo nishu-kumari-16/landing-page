@@ -13,6 +13,8 @@ import Input from "../input";
 import Button from "../button";
 import CloseIcon from "@mui/icons-material/Close";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { ReactComponent as EllipsisLoader } from "../../assets/icons/loader.svg";
 
 const yupSchema = yup
   .object({
@@ -35,18 +37,43 @@ const yupSchema = yup
 const JoinUsForm = ({ isOpen, onClose }: any) => {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onSubmit" });
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const onSubmit: SubmitHandler<any> = (data) => {
-    onClose && onClose();
-    toast("🦄Successfully Submitted", {
-      type: "success",
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: true,
-    });
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("phone", data.phone);
+    formData.append("email", data.email);
+    formData.append("message", data.message);
+    formData.append("vehicleType", data.vehicleType);
+    formData.append("vehicleCount", data.vehicleCount);
+    formData.append("type", "joinUs");
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyjK47PipHLjvPLvY0su8IMcByz-uSkA7_0-nn7dSnRmBaSCuDie2aY4RRnUBhKJo4clQ/exec",
+      {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      }
+    )
+      .then((res) => {
+        setLoading(false);
+        toast("Successfully Submitted your details", {
+          type: "success",
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+        });
+        reset();
+        onClose();
+      })
+      .catch((data) => console.log(data));
   };
 
   return (
@@ -131,14 +158,17 @@ const JoinUsForm = ({ isOpen, onClose }: any) => {
             className="flex-1"
             label="Your Message"
           />
-
-          <Button
-            variant="outlined"
-            className="border w-fit py-4 !box-border !text-md !border-fulvous !text-fulvous hover:!bg-fulvous hover:!text-white"
-            type="submit"
-          >
-            SUBMIT
-          </Button>
+          {loading ? (
+            <EllipsisLoader className="h-[48px]" />
+          ) : (
+            <Button
+              variant="outlined"
+              className="border w-fit py-4 !box-border !text-md !border-fulvous !text-fulvous hover:!bg-fulvous hover:!text-white"
+              type="submit"
+            >
+              SUBMIT
+            </Button>
+          )}
         </form>
       </div>
     </Dialog>
