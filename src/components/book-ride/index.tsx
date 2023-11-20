@@ -15,6 +15,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import { CallOutlined } from "@mui/icons-material";
 import BikeScooterIcon from "@mui/icons-material/BikeScooter";
+import { useState } from "react";
+import { EXCEL_SHEET_URL } from "../../helpers/utils";
+import { ReactComponent as EllipsisLoader } from "../../assets/icons/loader.svg";
 
 const yupSchema = yup
   .object({
@@ -61,19 +64,41 @@ const BookYourTaxiRide = () => {
     register,
     handleSubmit,
     watch,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onSubmit" });
 
-  const onSubmit: SubmitHandler<any> = (data) => {
-    toast("Successfully Submitted your details", {
-      type: "success",
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: true,
-    });
-  };
+  const [loading, setLoading] = useState<boolean>(false);
 
-  console.log(errors);
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    setLoading(true);
+    const formData = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      formData.append(key, value as any);
+    });
+    formData.append("type", "bookRide");
+
+    fetch(EXCEL_SHEET_URL, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
+    })
+      .then((res) => {
+        setLoading(false);
+        toast("Successfully Submitted your details", {
+          type: "success",
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+        });
+        setValue("category", null);
+        setValue("bodyType", null);
+        setValue("time", null);
+        reset();
+      })
+      .catch((data) => console.log(data));
+  };
 
   return (
     <FadeInWhenVisible>
@@ -285,13 +310,17 @@ const BookYourTaxiRide = () => {
                   md={3}
                   lg={4}
                 >
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    className="!bg-fulvous max-h-[48px]  !capitalize flex-1"
-                  >
-                    Book your Taxi
-                  </Button>
+                  {loading ? (
+                    <EllipsisLoader className="h-[48px]" />
+                  ) : (
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      className="!bg-fulvous max-h-[48px]  !capitalize flex-1"
+                    >
+                      Book your Taxi
+                    </Button>
+                  )}
                 </Grid>
               </Grid>
             </form>

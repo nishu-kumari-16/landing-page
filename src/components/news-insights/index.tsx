@@ -38,13 +38,10 @@ const NewsAndInsights = () => {
   const convertToDesiredFormat = async () => {
     const url =
       "https://docs.google.com/spreadsheets/d/19iSN5IH_bClpC3MAk6bR1kt1x5kpwV3k75yYzmmfd4c/edit?usp=sharing";
-    const data = await fetchData(url);
+    const data = await fetchData(url, 0);
     const result = data.slice(1).map((item: any) => ({
       type: item.B || "",
-      date:
-        typeof item.C === "number"
-          ? new Date(item.C).toDateString()
-          : item.C || "",
+      date: item.C || "",
       author: item.D || "",
       title: item.E || "",
       description: item.F || "",

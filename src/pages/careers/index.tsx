@@ -1,10 +1,11 @@
 import Layout from "../../components/layout";
 import CareersImage from "../../assets/icons/careers-banner.jpg";
 import { Grid } from "@mui/material";
-import { careersMetaData } from "./meta";
 import CareersCard from "./card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CareersForm from "../../components/careers-form";
+import { fetchData } from "../../helpers/utils";
+import { ReactComponent as EllipsisLoader } from "../../assets/icons/loader.svg";
 
 const Careers = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -18,6 +19,25 @@ const Careers = () => {
     setSelectedJob(null);
     setModalOpen(false);
   };
+
+  const [careersMetaData, setCareersMetaData] = useState<any>();
+  const convertToDesiredFormat = async () => {
+    const url =
+      "https://docs.google.com/spreadsheets/d/19iSN5IH_bClpC3MAk6bR1kt1x5kpwV3k75yYzmmfd4c/edit?usp=sharing";
+    const data = await fetchData(url, 1);
+    const result = data.slice(1).map((item: any) => ({
+      id: item.A || "",
+      name: item.B || "",
+      location: item.C || "",
+      type: item.D || "",
+      role: item.E || "",
+    }));
+    setCareersMetaData(result);
+  };
+
+  useEffect(() => {
+    convertToDesiredFormat();
+  }, []);
 
   return (
     <Layout>
@@ -33,11 +53,15 @@ const Careers = () => {
           columns={{ xs: 4, sm: 8, md: 12 }}
           className=" px-4 tablet:px-[8rem] py-[4rem]"
         >
-          {careersMetaData.map((data, index) => (
-            <Grid item xs={4} sm={4} md={4}>
-              <CareersCard {...data} key={index} onApply={onApply} />
-            </Grid>
-          ))}
+          {careersMetaData ? (
+            careersMetaData.map((data: any, index: number) => (
+              <Grid item xs={4} sm={4} md={4}>
+                <CareersCard {...data} key={index} onApply={onApply} />
+              </Grid>
+            ))
+          ) : (
+            <EllipsisLoader />
+          )}
         </Grid>
         {isModalOpen && (
           <CareersForm

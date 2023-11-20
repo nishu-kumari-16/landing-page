@@ -8,6 +8,7 @@ import Button from "../button";
 import { toast } from "react-toastify";
 import { ReactComponent as EllipsisLoader } from "../../assets/icons/loader.svg";
 import { useState } from "react";
+import { EXCEL_SHEET_URL } from "../../helpers/utils";
 
 const yupSchema = yup
   .object({
@@ -46,14 +47,11 @@ const ContactUsForm = () => {
     formData.append("message", data.message);
     formData.append("type", "contactUs");
 
-    fetch(
-      "https://script.google.com/macros/s/AKfycbyjK47PipHLjvPLvY0su8IMcByz-uSkA7_0-nn7dSnRmBaSCuDie2aY4RRnUBhKJo4clQ/exec",
-      {
-        method: "POST",
-        body: formData,
-        mode: "no-cors",
-      }
-    )
+    fetch(EXCEL_SHEET_URL, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
+    })
       .then((res) => {
         setLoading(false);
         toast("Successfully Submitted your details", {

@@ -5,9 +5,11 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../input";
 import Button from "../button";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { toast } from "react-toastify";
+import { ReactComponent as EllipsisLoader } from "../../assets/icons/loader.svg";
+import { EXCEL_SHEET_URL } from "../../helpers/utils";
 
 const yupSchema = yup
   .object({
@@ -23,8 +25,8 @@ const yupSchema = yup
       .min(10, "Please enter valid mobile number")
       .required("Mobile number is required"),
     gender: yup.string().required("Gender is required"),
-    experienceLevel: yup.string().required("Experience Level is required"),
-    resume: yup.mixed().required("Resume is required"),
+    experience: yup.string().required("Experience Level is required"),
+    resume: yup.mixed(),
   })
   .required();
 
@@ -33,17 +35,38 @@ const CareersForm = ({ isOpen, onClose, job }: any) => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm<any>({ resolver: yupResolver(yupSchema), mode: "onSubmit" });
 
-  const onSubmit: SubmitHandler<any> = (data) => {
-    onClose && onClose();
-    toast("🦄Successfully Applied", {
-      type: "success",
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: true,
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    setLoading(true);
+    const formData = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      formData.append(key, value as any);
     });
+    formData.append("type", "careers");
+
+    fetch(EXCEL_SHEET_URL, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
+    })
+      .then((res) => {
+        setLoading(false);
+        toast("Successfully Submitted your details", {
+          type: "success",
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+        });
+
+        reset();
+        onClose();
+      })
+      .catch((data) => console.log(data));
   };
 
   useEffect(() => {
@@ -135,9 +158,9 @@ const CareersForm = ({ isOpen, onClose, job }: any) => {
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
               <div className="text-sm !font-semibold">Experience Level</div>
-              {errors.experienceLevel?.message?.toString() && (
+              {errors.experience?.message?.toString() && (
                 <div className="text-red text-xs">
-                  {errors.experienceLevel?.message?.toString()}
+                  {errors.experience?.message?.toString()}
                 </div>
               )}
             </div>
@@ -177,14 +200,17 @@ const CareersForm = ({ isOpen, onClose, job }: any) => {
             className="flex-1"
             label="Resume"
           />
-
-          <Button
-            variant="outlined"
-            className="border w-full py-4 !box-border !text-md !border-fulvous !text-fulvous hover:!bg-fulvous hover:!text-white"
-            type="submit"
-          >
-            APPLY
-          </Button>
+          {loading ? (
+            <EllipsisLoader className="h-[48px]" />
+          ) : (
+            <Button
+              variant="outlined"
+              className="border w-full py-4 !box-border !text-md !border-fulvous !text-fulvous hover:!bg-fulvous hover:!text-white"
+              type="submit"
+            >
+              APPLY
+            </Button>
+          )}
         </form>
       </div>
     </Dialog>
