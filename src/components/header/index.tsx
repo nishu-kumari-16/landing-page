@@ -7,7 +7,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -100,8 +99,6 @@ const Header = () => {
           </Box>
 
           <div className="flex gap-4 justify-end items-center ">
-            <SearchIcon className="text-darkGray" />
-            <MenuIcon className="text-darkGray" />
             <Button
               className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]"
               onClick={() => {

@@ -107,7 +107,7 @@ const BookYourTaxiRide = () => {
         id="book-ride"
       >
         <div className="flex flex-col items-center justify-center flex-1 rounded-xl relative bg-codGray h-full w-full min-h-[30rem] py-4 overflow-hidden ">
-          <div className="w-[70%] flex flex-wrap flex-col gap-8 self-end px-6 z-[3]">
+          <div className="tablet:w-[70%] w-full flex flex-wrap flex-col gap-8 self-end px-6 z-[3]">
             <Typography className="text-fulvous !font-bold" fontSize={16}>
               {`/// ONLINE BOOKING`}
             </Typography>
@@ -326,7 +326,7 @@ const BookYourTaxiRide = () => {
             </form>
           </div>
 
-          <div className="absolute top-0 left-0 w-[30%] bottom-0 h-full bg-fulvous"></div>
+          <div className="absolute top-0 left-0 tablet:w-[30%] w-0 bottom-0 h-full bg-fulvous"></div>
           <img
             src={Car}
             className="absolute left-[-6rem] hidden tablet:flex"

@@ -23,7 +23,7 @@ export const fetchData = async (url: string, sheetNumber: number = 0) => {
     const sheetData = XLSX.utils.sheet_to_json(worksheet, {
       raw: true,
     });
-    console.log(sheetData, worksheet);
+    console.log(sheetData, firstSheetName, worksheet);
     const filledRows = sheetData.filter(
       (row: any) => row.A !== null && row.A !== undefined
     );

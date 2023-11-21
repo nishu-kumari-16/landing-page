@@ -61,8 +61,6 @@ const HeaderLarge = () => {
           <div className="flex gap-6 w-[calc(100%-30px)] bg-fulvous  ">
             {renderRoutes()}
             <div className="flex flex-1 gap-4 justify-end items-center bg-fulvous">
-              <SearchIcon className="text-white" />
-              <MenuIcon className="text-white" />
               <Button
                 className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]"
                 onClick={() => {

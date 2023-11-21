@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import FadeInWhenVisible from "../fade-in-visible";
 import NewsCard from "./card";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchData } from "../../helpers/utils";
 import { useKeenSlider } from "keen-slider/react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -9,30 +9,70 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { ReactComponent as Loader } from "../../assets/icons/loader.svg";
 
 const NewsAndInsights = () => {
-  const [sliderRef, keenSlider] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    slides: {
-      origin: "center",
-      perView: 3,
-      spacing: 16,
-    },
-    breakpoints: {
-      "(max-width: 900px)": {
-        slides: {
-          origin: "center",
-          perView: 2,
-          spacing: 16,
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [sliderRef, keenSlider] = useKeenSlider<HTMLDivElement>(
+    {
+      loop: true,
+      slides: {
+        origin: "center",
+        perView: 3,
+        spacing: 16,
+      },
+      slideChanged(slider) {
+        setCurrentSlide(slider.track.details.rel);
+      },
+      created() {
+        setLoaded(true);
+      },
+      breakpoints: {
+        "(max-width: 900px)": {
+          slides: {
+            origin: "center",
+            perView: 2,
+            spacing: 16,
+          },
+        },
+        "(max-width: 700px)": {
+          slides: {
+            origin: "center",
+            perView: 1,
+            spacing: 16,
+          },
         },
       },
-      "(max-width: 700px)": {
-        slides: {
-          origin: "center",
-          perView: 1,
-          spacing: 16,
-        },
-      },
     },
-  });
+    [
+      (slider) => {
+        let timeout: ReturnType<typeof setTimeout>;
+        let mouseOver = false;
+        function clearNextTimeout() {
+          clearTimeout(timeout);
+        }
+        function nextTimeout() {
+          clearTimeout(timeout);
+          if (mouseOver) return;
+          timeout = setTimeout(() => {
+            slider.next();
+          }, 5000);
+        }
+        slider.on("created", () => {
+          slider.container.addEventListener("mouseover", () => {
+            mouseOver = true;
+            clearNextTimeout();
+          });
+          slider.container.addEventListener("mouseout", () => {
+            mouseOver = false;
+            nextTimeout();
+          });
+          nextTimeout();
+        });
+        slider.on("dragStarted", clearNextTimeout);
+        slider.on("animationEnded", nextTimeout);
+        slider.on("updated", nextTimeout);
+      },
+    ]
+  );
 
   const [newsData, setNewsData] = useState<any>();
   const convertToDesiredFormat = async () => {
@@ -71,27 +111,51 @@ const NewsAndInsights = () => {
             long-term guarantee and regularly master new technologies.
           </div>
           <div className="block px-8 relative z-[2] w-full">
-            <button
+            {/* <button
               onClick={() => keenSlider.current?.prev()}
               className=" absolute top-[45%] rounded-full z-[2] h-[3rem] min-w-[3rem] left-0 flex justify-center items-center  bg-fulvous transition  hover:text-white"
             >
               <ArrowBackIosNewIcon className="text-white" />
-            </button>
+            </button> */}
             {newsData ? (
-              <div className="keen-slider" ref={sliderRef}>
-                {newsData?.map((data: any, index: number) => (
-                  <NewsCard {...data} key={index} />
-                ))}
-              </div>
+              <React.Fragment>
+                <div className="keen-slider pb-6" ref={sliderRef}>
+                  {newsData?.map((data: any, index: number) => (
+                    <NewsCard {...data} key={index} />
+                  ))}
+                </div>
+                {loaded && keenSlider.current && (
+                  <div className="flex justify-center px-10">
+                    {[
+                      ...Array(
+                        keenSlider.current.track.details.slides.length
+                      ).keys(),
+                    ].map((value, idx) => {
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => {
+                            keenSlider.current?.moveToIdx(idx);
+                          }}
+                          className={`border-none w-2 h-2 bg-gray p-1 mx-1 rounded-full cursor-pointer z-10 ${
+                            currentSlide === idx && " !bg-fulvous"
+                          }`}
+                        ></button>
+                      );
+                    })}
+                  </div>
+                )}
+              </React.Fragment>
             ) : (
               <Loader />
             )}
-            <button
+
+            {/* <button
               onClick={() => keenSlider.current?.next()}
               className="rounded-full absolute right-[-1rem] top-[45%]  h-[3rem] min-w-[3rem]  bg-fulvous transition  hover:text-white"
             >
               <ArrowForwardIosIcon className="text-white" />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
