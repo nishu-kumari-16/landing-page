@@ -4,12 +4,13 @@ import { headerLargeData } from "./meta";
 import colorPalette from "../../helpers/color-palette";
 import TopBanner from "../top-banner";
 import { appRoutes } from "../header/meta";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const HeaderLarge = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const renderRoutes = (showCloseIcon: boolean = false) => {
     return appRoutes.map((route, index) => (
@@ -64,11 +65,12 @@ const HeaderLarge = () => {
               <MenuIcon className="text-white" />
               <Button
                 className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]"
-                onClick={() =>
+                onClick={() => {
+                  navigate("/");
                   document
                     .getElementById("book-ride")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
               >
                 Book a Taxi
               </Button>

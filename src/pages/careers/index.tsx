@@ -25,6 +25,7 @@ const Careers = () => {
     const url =
       "https://docs.google.com/spreadsheets/d/19iSN5IH_bClpC3MAk6bR1kt1x5kpwV3k75yYzmmfd4c/edit?usp=sharing";
     const data = await fetchData(url, 1);
+    console.log(data);
     const result = data.slice(1).map((item: any) => ({
       id: item.A || "",
       name: item.B || "",
@@ -55,8 +56,8 @@ const Careers = () => {
         >
           {careersMetaData ? (
             careersMetaData.map((data: any, index: number) => (
-              <Grid item xs={4} sm={4} md={4}>
-                <CareersCard {...data} key={index} onApply={onApply} />
+              <Grid item xs={4} sm={4} md={4} key={index}>
+                <CareersCard {...data} onApply={onApply} />
               </Grid>
             ))
           ) : (

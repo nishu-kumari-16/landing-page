@@ -6,13 +6,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
   const { pathname } = useLocation();
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -36,18 +36,6 @@ const Header = () => {
       </Link>
     ));
   };
-
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      window.innerWidth > 800 && setMenuOpen(false);
-      setWidth(window.innerWidth);
-    });
-    return () => {
-      window.removeEventListener("resize", () => {
-        setWidth(window.innerWidth);
-      });
-    };
-  }, []);
 
   return (
     <React.Fragment>
@@ -116,11 +104,9 @@ const Header = () => {
             <MenuIcon className="text-darkGray" />
             <Button
               className="!h-full !rounded-none !text-white !capitalize !bg-black !w-[120px]"
-              onClick={() =>
-                document
-                  .getElementById("book-ride")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => {
+                navigate("/", { state: { isNavigated: true } });
+              }}
             >
               Book a Taxi
             </Button>

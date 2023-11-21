@@ -11,8 +11,19 @@ import GetApp from "../../components/get-app";
 import NewsAndInsights from "../../components/news-insights";
 import AchievementsSection from "../../components/achievements-section";
 import BecomePartner from "../../components/become-partner";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    location?.state?.isNavigated &&
+      document
+        .getElementById("book-ride")
+        ?.scrollIntoView({ behavior: "smooth" });
+  }, [location?.state?.isNavigated]);
+
   return (
     <Layout>
       <HeroSection />
