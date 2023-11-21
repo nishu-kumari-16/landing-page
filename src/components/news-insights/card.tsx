@@ -10,6 +10,7 @@ const NewsCard = ({
   date,
   author,
   description,
+  link,
   completeDescription,
 }: any) => {
   const [expanded, setExpanded] = useState<boolean>(false);

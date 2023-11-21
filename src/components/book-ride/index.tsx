@@ -116,13 +116,13 @@ const BookYourTaxiRide = () => {
             </Typography>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-wrap flex-col gap-8 self-end px-6 z-[3]"
+              className="flex flex-wrap flex-col gap-8 self-end tablet:px-6 px-0 z-[3]"
             >
               <Grid
                 container
                 spacing={4}
                 columns={{ xs: 3, sm: 6, md: 6, lg: 12 }}
-                className=" px-4"
+                className=" tablet:px-4 px-0"
               >
                 <MuiInput
                   endAdornment={

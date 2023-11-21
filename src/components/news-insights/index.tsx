@@ -47,6 +47,7 @@ const NewsAndInsights = () => {
       description: item.F || "",
       completeDescription: item.F ? item.F.slice(0, 100) : "",
       image: item.G || "",
+      link: item.H || "",
     }));
     setNewsData(result);
   };
