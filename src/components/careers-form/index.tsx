@@ -26,7 +26,7 @@ const yupSchema = yup
       .required("Mobile number is required"),
     gender: yup.string().required("Gender is required"),
     experience: yup.string().required("Experience Level is required"),
-    resume: yup.mixed(),
+    resume: yup.mixed().required("Resume link is required"),
   })
   .required();
 
@@ -196,8 +196,8 @@ const CareersForm = ({ isOpen, onClose, job }: any) => {
           <Input
             name="resume"
             register={register}
-            type="file"
             className="flex-1"
+            placeholder="Paste your resume link here"
             label="Resume"
           />
           {loading ? (
