@@ -27,12 +27,10 @@ export const fetchData = async (url: string, sheetNumber: number = 0) => {
     const sheetData = XLSX.utils.sheet_to_json(worksheet, {
       header: headers as any,
     });
-    console.log(workbook.SheetNames);
     const filledRows = sheetData.filter(
       (row: any) => row.A !== null && row.A !== undefined
     );
     filledRows.shift();
-    console.log(filledRows);
     return filledRows;
   } catch (error) {
     console.error("Error fetching data:", error);

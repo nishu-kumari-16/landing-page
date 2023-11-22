@@ -25,7 +25,6 @@ const Careers = () => {
     const url =
       "https://docs.google.com/spreadsheets/d/1qJuX4orIMwZwnPL8h2XGhLXQNn6XZFrta6BLODcVyaQ/edit?usp=sharing";
     const data = await fetchData(url, 0);
-    console.log(data);
     const result = data.slice(1).map((item: any) => ({
       id: item.A || "",
       name: item.B || "",

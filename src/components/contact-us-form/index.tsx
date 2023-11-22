@@ -61,7 +61,6 @@ const ContactUsForm = () => {
           hideProgressBar: true,
         });
         reset();
-        console.log(res.text());
       })
       .catch((data) => console.log(data));
   };
