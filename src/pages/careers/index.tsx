@@ -23,8 +23,8 @@ const Careers = () => {
   const [careersMetaData, setCareersMetaData] = useState<any>();
   const convertToDesiredFormat = async () => {
     const url =
-      "https://docs.google.com/spreadsheets/d/19iSN5IH_bClpC3MAk6bR1kt1x5kpwV3k75yYzmmfd4c/edit?usp=sharing";
-    const data = await fetchData(url, 1);
+      "https://docs.google.com/spreadsheets/d/1qJuX4orIMwZwnPL8h2XGhLXQNn6XZFrta6BLODcVyaQ/edit?usp=sharing";
+    const data = await fetchData(url, 0);
     console.log(data);
     const result = data.slice(1).map((item: any) => ({
       id: item.A || "",

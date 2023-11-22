@@ -15,7 +15,7 @@ const TestimonialsCard = ({ profile, name, rating, review }: any) => {
           className="h-14 w-14 rounded-full object-cover"
         />
         <div className="flex flex-col gap-2">
-          <Rating value={rating} size="small" />
+          <Rating value={rating} size="small" disabled />
           <Typography className="!text-sm !font-bold">{name}</Typography>
         </div>
       </div>

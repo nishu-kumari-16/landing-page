@@ -87,7 +87,7 @@ const Footer = () => {
             <WifiCalling3Icon className="text-white " />
             <div className="flex flex-col">
               <Typography fontSize={12} color={colorPalette.white}>
-                Call For Taxi
+                Call For Booking
               </Typography>
               <Typography
                 fontSize={20}

@@ -112,7 +112,7 @@ const BookYourTaxiRide = () => {
               {`/// ONLINE BOOKING`}
             </Typography>
             <Typography className="text-white !font-bold" fontSize={36}>
-              Book Your Taxi Ride
+              Book Your Ride
             </Typography>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -318,7 +318,7 @@ const BookYourTaxiRide = () => {
                       type="submit"
                       className="!bg-fulvous max-h-[48px]  !capitalize flex-1"
                     >
-                      Book your Taxi
+                      Book your Ride
                     </Button>
                   )}
                 </Grid>

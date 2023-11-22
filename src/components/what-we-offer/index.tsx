@@ -40,7 +40,7 @@ const WhatWeOffer = () => {
           </div>
         </div>
         <div className="block px-8 relative z-[2]">
-          <div className="flex gap-6 p-4 justify-center tablet:flex-row flex-col">
+          <div className="flex gap-6 p-4 justify-center items-center tablet:flex-row flex-col">
             {metaData?.map((data, index) => (
               <Card
                 key={index}

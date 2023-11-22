@@ -13,7 +13,7 @@ const TestimonialsCard = ({
       <div className=" gap-4 keen-slider__slide max-w-[500px] flex h-auto flex-col">
         <div className="flex flex-col relative bg-duskPurple rounded-lg shadow-lg p-6 sm:p-8 lg:p-12 h-auto flex-1 gap-4">
           <FormatQuote className="absolute right-[3rem] top-[60%] translate-y-[-50%] !text-[200px]  opacity-[0.2] text-[#eb6500] " />
-          <Rating value={rating} />
+          <Rating value={rating} disabled />
           <Typography className="!text-xs text-justify">{review}</Typography>
         </div>
 

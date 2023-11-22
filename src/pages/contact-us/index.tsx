@@ -13,10 +13,10 @@ const ContactUs = () => {
           width="100%"
           height="300px"
           title="map"
-          src="https://maps.google.com/maps?width=100%&amp;height=800&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+          src="https://maps.google.com/maps?width=100%&amp;height=800&amp;hl=en&amp;q=muzzafarpur&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
         ></iframe>
       </div>
-      <div className="flex pr-4 tablet:pr-[8rem] flex-wrap relative gap-8 overflow-hidden ">
+      <div className="flex pr-4 pl-4 tablet:pr-[8rem] tablet:flex-row flex-col relative gap-8 overflow-hidden ">
         <img
           src={MapBackground}
           className="absolute top-0 left-0 right-0 w-[50%] opacity-[0.3]"

@@ -2,9 +2,10 @@ import { useKeenSlider } from "keen-slider/react";
 import TestimonialsCard from "./TestimonialCard";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { testimonialsMetaData } from "./meta";
 import { Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchData } from "../../helpers/utils";
+import { ReactComponent as Loader } from "../../assets/icons/loader.svg";
 
 const ClientSays = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -66,6 +67,26 @@ const ClientSays = () => {
     ]
   );
 
+  const [testimonialsMetaData, setTestimonialsMetaData] = useState<any>();
+  const convertToDesiredFormat = async () => {
+    const url =
+      "https://docs.google.com/spreadsheets/d/1axC2Nb2uUTW8dXM5FAG7JA9e7e30AEEFJrrbqV28XQs/edit?usp=sharing";
+    const data = await fetchData(url, 0);
+    const result = data?.slice(1).map((item: any) => ({
+      id: item.A || "",
+      rating: item.B || "",
+      name: item.C || "",
+      review: item.D || "",
+      profile: item.E || "",
+      designation: item.F || "",
+    }));
+    setTestimonialsMetaData(result);
+  };
+
+  useEffect(() => {
+    convertToDesiredFormat();
+  }, []);
+
   return (
     <section className="bg-mistGray pt-[2rem] relative px-4 tablet:px-[8rem]">
       <div className="mx-[1.5rem]  px-4 py-12 sm:px-6 tablet:me-0 tablet:py-16 tablet:pe-0 tablet:ps-8 xl:py-24">
@@ -95,34 +116,38 @@ const ClientSays = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 gap-8 tablet:grid-cols-2 tablet:items-center tablet:gap-16">
-          <div className="-mx-6 tablet:col-span-2 tablet:mx-0">
-            <div ref={sliderRef} className="keen-slider">
-              {testimonialsMetaData.map((data, index) => (
-                <TestimonialsCard {...data} key={index} />
-              ))}
-            </div>
-            {loaded && keenSlider.current && (
-              <div className="flex justify-center px-10 mt-8">
-                {[
-                  ...Array(
-                    keenSlider.current.track.details.slides.length
-                  ).keys(),
-                ].map((value, idx) => {
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => {
-                        keenSlider.current?.moveToIdx(idx);
-                      }}
-                      className={`border-none w-2 h-2 bg-gray p-1 mx-1 rounded-full cursor-pointer z-10 ${
-                        currentSlide === idx && " !bg-fulvous"
-                      }`}
-                    ></button>
-                  );
-                })}
+          {testimonialsMetaData?.length ? (
+            <div className="-mx-6 tablet:col-span-2 tablet:mx-0">
+              <div ref={sliderRef} className="keen-slider">
+                {testimonialsMetaData.map((data: any, index: number) => (
+                  <TestimonialsCard {...data} key={index} />
+                ))}
               </div>
-            )}
-          </div>
+              {loaded && keenSlider.current && (
+                <div className="flex justify-center px-10 mt-8">
+                  {[
+                    ...Array(
+                      keenSlider.current.track.details.slides.length
+                    ).keys(),
+                  ].map((value, idx) => {
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          keenSlider.current?.moveToIdx(idx);
+                        }}
+                        className={`border-none w-2 h-2 bg-gray p-1 mx-1 rounded-full cursor-pointer z-10 ${
+                          currentSlide === idx && " !bg-fulvous"
+                        }`}
+                      ></button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          ) : (
+            <Loader />
+          )}
         </div>
       </div>
     </section>

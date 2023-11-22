@@ -4,7 +4,7 @@ import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 
 export const metaData = [
   {
-    name: "Easy to Search Ridek Taxi!",
+    name: "Easy to Search govahan Taxi!",
     image: <TravelExploreOutlinedIcon className="!w-10 !h-10" />,
   },
   {

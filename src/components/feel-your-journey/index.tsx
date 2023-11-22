@@ -11,13 +11,13 @@ const FeelYourJourney = () => {
       <div className="flex  backdrop-brightness-90 gap-6 w-full flex-wrap py-[3rem] tablet:px-[8rem] px-4 tablet:z-0 z-[2]">
         <div className="flex flex-col gap-4">
           <Typography fontSize={14} color={colorPalette.codGray}>
-            RIDEK TAXI SERVICES!
+            GOVAHAN TRANSPORT SERVICES!
           </Typography>
           <Typography fontSize={24} fontWeight={700} color={colorPalette.white}>
             Feel Your journey with Ridek!
           </Typography>
           <Button className="!bg-black !px-6 !w-fit !text-white !capitalize">
-            Book a Taxi
+            Book a Ride
           </Button>
         </div>
         <div className="flex flex-col gap-4 z-[3]  ">

@@ -14,20 +14,24 @@ export const fetchData = async (url: string, sheetNumber: number = 0) => {
     /* Call XLSX */
     const workbook = XLSX.read(binaryString, {
       type: "binary",
+      WTF: true,
     });
 
     /* DO SOMETHING WITH workbook HERE */
-    const firstSheetName = workbook.SheetNames[sheetNumber];
+    const firstSheetName = `Sheet${sheetNumber + 1}`;
+
     /* Get worksheet */
     const worksheet = workbook.Sheets[firstSheetName];
+    // Extract headers from the first row
+    const headers = XLSX.utils.sheet_to_json(worksheet, { header: 1 })[0];
     const sheetData = XLSX.utils.sheet_to_json(worksheet, {
-      raw: true,
+      header: headers as any,
     });
-    console.log(sheetData, firstSheetName, worksheet);
+    console.log(workbook.SheetNames);
     const filledRows = sheetData.filter(
       (row: any) => row.A !== null && row.A !== undefined
     );
-
+    filledRows.shift();
     console.log(filledRows);
     return filledRows;
   } catch (error) {

@@ -29,7 +29,7 @@ const CallUsNow = () => {
           </div>
           <div className="flex flex-col gap-1">
             <Typography fontSize={12} color={colorPalette.white}>
-              Call For Taxi
+              Call For Booking
             </Typography>
             <Typography fontSize={20} color={colorPalette.fulvous}>
               840-917-2925

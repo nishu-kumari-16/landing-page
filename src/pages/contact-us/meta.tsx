@@ -5,17 +5,17 @@ import { CallEnd } from "@mui/icons-material";
 export const contactUsMetaData = [
   {
     icon: <LocationOn className="text-fulvous" />,
-    title: "962 Fifth Avenue",
-    subText: "New York, NY10022",
+    title: "Near NTPC Thermal Power, Harchnda Road Railway Crossing Kanti",
+    subText: "Muzaffarpur, Bihar 843109",
   },
   {
     icon: <Message className="text-fulvous" />,
-    title: "hello@govaahan.com",
-    subText: "yourmail@gmail.com",
+    title: "help@govahan.com",
+    subText: "careers@govahan.com",
   },
   {
     icon: <CallEnd className="text-fulvous" />,
-    title: "(+123) 456  789 101",
-    subText: "+1-302-123-4567",
+    title: "(+91) 840-917-2925",
+    subText: "",
   },
 ];

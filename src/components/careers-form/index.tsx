@@ -30,6 +30,8 @@ const yupSchema = yup
   })
   .required();
 
+//service id: service_ggr6r4e
+
 const CareersForm = ({ isOpen, onClose, job }: any) => {
   const {
     register,
@@ -43,30 +45,69 @@ const CareersForm = ({ isOpen, onClose, job }: any) => {
 
   const onSubmit: SubmitHandler<any> = async (data) => {
     setLoading(true);
-    const formData = new FormData();
-    Object.entries(data).forEach(([key, value]) => {
-      formData.append(key, value as any);
-    });
-    formData.append("type", "careers");
+    const file = data.resume[0];
+    const fr = new FileReader();
+    fr.readAsArrayBuffer(file);
+    fr.onload = (f) => {
+      const url =
+        "https://script.google.com/macros/s/AKfycbwaXXyOIhUHM2Xih4AWhvV2i_0dc-BA7MHWNzwcMK5OwYPpxJhvoazvQT78wmFtI-ekFw/exec";
 
-    fetch(EXCEL_SHEET_URL, {
-      method: "POST",
-      body: formData,
-      mode: "no-cors",
-    })
-      .then((res) => {
-        setLoading(false);
-        toast("Successfully Submitted your details", {
-          type: "success",
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: true,
-        });
-
-        reset();
-        onClose();
+      const qs = new URLSearchParams({
+        filename: data.resume[0].name || file.name,
+        mimeType: file.type,
+      });
+      fetch(`${url}?${qs}`, {
+        method: "POST",
+        body: JSON.stringify([...new Int8Array(f.target!.result as any)]),
       })
-      .catch((data) => console.log(data));
+        .then((res) => res.json())
+        .then(
+          (
+            e // setLoading(true);
+          ) => {
+            const formData = new FormData();
+            Object.entries(data).forEach(([key, value]) => {
+              key !== "resume" && formData.append(key, value as any);
+            });
+            formData.append("type", "careers");
+            formData.append("resume", e.fileUrl);
+
+            fetch(EXCEL_SHEET_URL, {
+              method: "POST",
+              body: formData,
+              mode: "no-cors",
+            })
+              .then((res) => {
+                setLoading(false);
+                toast("Successfully Submitted your details", {
+                  type: "success",
+                  position: "top-center",
+                  autoClose: 5000,
+                  hideProgressBar: true,
+                });
+
+                reset();
+                onClose();
+              })
+              .catch((data) =>
+                toast("something went wrong. please try again!!", {
+                  type: "error",
+                  position: "top-center",
+                  autoClose: 5000,
+                  hideProgressBar: true,
+                })
+              );
+          }
+        )
+        .catch((err) =>
+          toast("something went wrong. please try again!!", {
+            type: "error",
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: true,
+          })
+        );
+    };
   };
 
   useEffect(() => {
@@ -196,6 +237,7 @@ const CareersForm = ({ isOpen, onClose, job }: any) => {
           <Input
             name="resume"
             register={register}
+            type="file"
             className="flex-1"
             placeholder="Paste your resume link here"
             label="Resume"

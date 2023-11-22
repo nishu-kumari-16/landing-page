@@ -20,14 +20,14 @@ const BecomePartner = () => {
             success for all.
           </div>
         </div>
-        <div className=" flex justify-between gap-1">
-          <div className="flex-1 flex flex-wrap gap-4 justify-center  items-center">
+        <div className=" flex justify-between gap-1 items-center">
+          <div className="flex-1 flex flex-wrap gap-4 max-h-[100px] justify-center  items-center">
             {partners.map((data, index) => (
               <div
-                className="flex items-center justify-center p-8 rounded-lg shadow-lg h-fit bg-white"
+                className="flex flex-1 h-[100%] items-center justify-center p-8 rounded-lg shadow-lg h-fit bg-white"
                 key={index}
               >
-                <img src={data} alt="data" className="h-8 " />
+                <img src={data} alt="data" className="h-[3rem]" />
               </div>
             ))}
           </div>

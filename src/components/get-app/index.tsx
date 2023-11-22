@@ -32,7 +32,7 @@ const GetApp = () => {
 
         <div className="flex gap-4 z-[12] max-h-[64px]">
           <PlayStore
-            className="cursor-pointer"
+            className="cursor-pointer w-[216px]"
             onClick={() =>
               window.open(
                 "https://play.google.com/store/apps/details?id=com.govahan.com"
@@ -40,14 +40,14 @@ const GetApp = () => {
             }
           />
 
-          <AppleStore
+          {/* <AppleStore
             className="cursor-pointer"
             onClick={() =>
               window.open(
                 "https://play.google.com/store/apps/details?id=com.govahan.com"
               )
             }
-          />
+          /> */}
         </div>
       </div>
       <div className="flex-2">
