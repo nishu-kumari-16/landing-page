@@ -6,7 +6,7 @@ const WhyRideWithRidek = () => {
     <div className="flex flex-col flex-1 h-full px-6 py-[5rem] gap-4 bg-fulvous !text-white">
       <Typography fontSize={13}>{`/// WHY CHOOSE US!`}</Typography>
       <Typography fontSize={24} className="!font-semibold">
-        Why Ride with Ridek?
+        Why Ride with Govahan?
       </Typography>
 
       <Typography fontSize={12}>

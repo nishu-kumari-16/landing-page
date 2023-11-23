@@ -14,7 +14,7 @@ const FeelYourJourney = () => {
             GOVAHAN TRANSPORT SERVICES!
           </Typography>
           <Typography fontSize={24} fontWeight={700} color={colorPalette.white}>
-            Feel Your journey with Ridek!
+            Feel Your journey with Govahan!
           </Typography>
           <Button className="!bg-black !px-6 !w-fit !text-white !capitalize">
             Book a Ride

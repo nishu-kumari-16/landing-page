@@ -1,9 +1,10 @@
 import { Grid, Typography } from "@mui/material";
 import Odometer from "react-odometerjs";
-import { achievementMetaData } from "./meta";
 import "odometer/themes/odometer-theme-default.css";
 import { useEffect, useState } from "react";
 import FadeInWhenVisible from "../fade-in-visible";
+import { fetchData } from "../../helpers/utils";
+import { ReactComponent as Loader } from "../../assets/icons/loader.svg";
 
 const OdometerComp = ({ data }: any) => {
   const [value, setValue] = useState<number>(0);
@@ -35,29 +36,48 @@ const OdometerComp = ({ data }: any) => {
 };
 
 const AchievementsSection = () => {
+  const [achievementMetaData, setAchievementMetaData] = useState<any>();
+  const convertToDesiredFormat = async () => {
+    const url =
+      "https://docs.google.com/spreadsheets/d/1-oIjzjFjdcHg4DaUGHnRdDdOON4RsfRZfFYWCZ5LYno/edit?usp=sharing";
+    const data = await fetchData(url, 0);
+    const result = data.slice(1).map((item: any) => ({
+      label: item.B,
+      value: item.C,
+    }));
+    setAchievementMetaData(result);
+  };
+
+  useEffect(() => {
+    convertToDesiredFormat();
+  }, []);
   return (
     <FadeInWhenVisible>
       <Grid container columns={{ xs: 10, sm: 10, md: 12 }}>
-        {achievementMetaData.map((data, index) => {
-          return (
-            <Grid
-              item
-              xs={5}
-              sm={5}
-              md={2.4}
-              key={index}
-              className="flex flex-col relative"
-            >
-              <div
-                className="bg-fulvous w-full flex justify-center items-center py-[3rem] flex-col border-r border-gray"
+        {achievementMetaData?.length ? (
+          achievementMetaData.map((data: any, index: number) => {
+            return (
+              <Grid
+                item
+                xs={5}
+                sm={5}
+                md={2.4}
                 key={index}
+                className="flex flex-col relative"
               >
-                <OdometerComp label={data.label} data={data.value} />
-                <Typography className="text-white">{data.label}</Typography>
-              </div>
-            </Grid>
-          );
-        })}
+                <div
+                  className="bg-fulvous w-full flex justify-center items-center py-[3rem] flex-col border-r border-gray"
+                  key={index}
+                >
+                  <OdometerComp label={data.label} data={data.value} />
+                  <Typography className="text-white">{data.label}</Typography>
+                </div>
+              </Grid>
+            );
+          })
+        ) : (
+          <Loader />
+        )}
       </Grid>
     </FadeInWhenVisible>
   );

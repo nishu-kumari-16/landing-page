@@ -39,6 +39,7 @@ const TopBanner = () => {
             >
               <Link
                 to={data.path}
+                target="_blank"
                 key={index}
                 className="!text-sm"
                 color={colorPalette.codGray}

@@ -10,9 +10,15 @@ export const TopBannerData = {
     { name: "FAQ", path: "/" },
   ],
   socialMediaIcons: [
-    { icons: <FacebookIcon />, path: "/www.facebook.com" },
-    { icons: <TwitterIcon />, path: "/www.twitter.com" },
-    { icons: <InstagramIcon />, path: "/www.instagram.com" },
-    { icons: <LinkedInIcon />, path: "/www.linkedin.com" },
+    {
+      icons: <FacebookIcon />,
+      path: "https://facebook.com/GoVahanCarrierPvtLtd",
+    },
+    { icons: <TwitterIcon />, path: "https://twitter.com/GoVahan" },
+    {
+      icons: <InstagramIcon />,
+      path: "https://instagram.com/govahan_official",
+    },
+    { icons: <LinkedInIcon />, path: "https://LinkedIn.com/company/GoVahan" },
   ],
 };

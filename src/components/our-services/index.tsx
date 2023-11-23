@@ -1,12 +1,13 @@
 import { Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ourServiceData } from "./meta";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import LuggageIcon from "@mui/icons-material/Luggage";
 import StadiumIcon from "@mui/icons-material/Stadium";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
-import ComponentSlider from "../component-slider";
 import { useKeenSlider } from "keen-slider/react";
+import { fetchData } from "../../helpers/utils";
+import { ReactComponent as Loader } from "../../assets/icons/loader.svg";
 
 const OurServices = () => {
   const [sliderRef] = useKeenSlider<HTMLDivElement>(
@@ -45,9 +46,36 @@ const OurServices = () => {
     ]
   );
 
+  const [cabsData, setCabsData] = useState<any>();
+  const [transportData, setTransportData] = useState<any>();
+  const convertToDesiredFormat = async (type: string) => {
+    const url =
+      type === "cabs"
+        ? "https://docs.google.com/spreadsheets/d/1jCHLenS7LRp0ah5CnBFT4r00mCt5HgAaTyEoVGgoGi0/edit?usp=sharing"
+        : "https://docs.google.com/spreadsheets/d/1S2TAabsw-vvCTx9ofucBQ4ydGYhEku4AXRjl1XmVSNk/edit?usp=sharing";
+    const data = await fetchData(url, 0);
+    const result = data?.slice(1).map((item: any) => ({
+      id: item.A || "",
+      passengers: item.B || "",
+      luggageCarry: item.C || "",
+      heatedSeats: item.D || "",
+      airCondition: item.E || "",
+      title: item.F || "",
+      description: item.G || "",
+      image: item.H || "",
+    }));
+    type === "cabs" ? setCabsData(result) : setTransportData(result);
+    type === "cabs" && setCurrentData(result);
+  };
+
+  useEffect(() => {
+    convertToDesiredFormat("cabs");
+    convertToDesiredFormat("transport");
+  }, []);
+
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
-  const [currentArrayData, setCurrentData] = useState<any>(ourServiceData.cabs);
+  const [currentArrayData, setCurrentData] = useState<any>(cabsData);
 
   return (
     <div className="flex flex-col py-[5rem] px-4 tablet:px-[8rem] bg-mistGray">
@@ -66,7 +94,7 @@ const OurServices = () => {
           }`}
           onClick={() => {
             setActiveIndex(0);
-            setCurrentData(ourServiceData.cabs);
+            setCurrentData(cabsData);
           }}
         >
           CABS
@@ -77,18 +105,18 @@ const OurServices = () => {
           }`}
           onClick={() => {
             setActiveIndex(1);
-            setCurrentData(ourServiceData.transport);
+            setCurrentData(transportData);
           }}
         >
           TRANSPORT
         </div>
       </div>
 
-      {currentArrayData && (
+      {currentArrayData ? (
         <div ref={sliderRef} className="keen-slider">
           {currentArrayData.map((currentData: any, index: number) => (
             <div
-              className="flex keen-slider__slide flex-wrap gap-4 border tablet:flex-row flex-col border-mutedGray shadow-sm rounded-lg p-6 my-6"
+              className="flex keen-slider__slide flex-wrap gap-4 border tablet:flex-row flex-col border-mutedGray bg-white shadow-sm rounded-lg p-6 my-6"
               key={index}
             >
               <div className="flex flex-col gap-2 flex-1 justify-center">
@@ -139,6 +167,8 @@ const OurServices = () => {
             </div>
           ))}
         </div>
+      ) : (
+        <Loader />
       )}
     </div>
   );

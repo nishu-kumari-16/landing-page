@@ -96,7 +96,9 @@ const Testimonials = () => {
                 className="text-fulvous "
                 fontSize={13}
               >{`/// CLIENTS TESTIMONIAL`}</Typography>
-              <Typography fontSize={24}>Ridek Passenger Reviews...</Typography>
+              <Typography fontSize={24}>
+                Govahan Passenger Reviews...
+              </Typography>
               <Typography fontSize={12} className="text-cloudyGray">
                 We successfully cope with tasks of varying complexity, provide
                 long-term guarantees and regularly master technologies.

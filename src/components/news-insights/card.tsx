@@ -22,7 +22,7 @@ const NewsCard = ({
         alt={image}
       />
 
-      <div className="flex flex-col gap-4 px-4 pb-4 relative">
+      <div className="flex flex-col flex-1 gap-4 px-4 pb-4 relative">
         <Typography
           fontSize={14}
           className="absolute !uppercase top-[-3.25rem] left-0 px-4 py-2 text-white z-2 bg-fulvous"
@@ -74,10 +74,10 @@ const NewsCard = ({
           )}
         </AnimatePresence>
         <div
-          className="text-fulvous py-1 cursor-pointer"
-          onClick={() => setExpanded(!expanded)}
+          className="text-fulvous text-md py-1 cursor-pointer flex flex-1 items-end"
+          onClick={() => window.open(link, "_blank")}
         >
-          Read More...
+          Read More
         </div>
       </div>
     </div>
