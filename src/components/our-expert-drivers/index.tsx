@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import colorPalette from "../../helpers/color-palette";
 import { useKeenSlider } from "keen-slider/react";
 import { useEffect, useState } from "react";
-import { fetchData } from "../../helpers/utils";
+import { fetchData, getDriveUrl } from "../../helpers/utils";
 import { ReactComponent as Loader } from "../../assets/icons/loader.svg";
 
 const OurExpertDrivers = () => {
@@ -80,7 +80,7 @@ const OurExpertDrivers = () => {
     const result = data?.slice(1).map((item: any) => ({
       id: item.A || "",
       name: item.B || "",
-      image: item.C || "",
+      image: getDriveUrl(item.C) || "",
       vehicle: item.D || "",
     }));
     setDriversData(result);

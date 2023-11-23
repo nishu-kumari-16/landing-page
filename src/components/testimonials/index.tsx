@@ -3,7 +3,7 @@ import TestimonialsCard from "./TestimonialCard";
 import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import WhyRideWithRidek from "../why-ride-with-ridek";
-import { fetchData } from "../../helpers/utils";
+import { fetchData, getDriveUrl } from "../../helpers/utils";
 import { ReactComponent as Loader } from "../../assets/icons/loader.svg";
 import FadeInWhenVisible from "../fade-in-visible";
 
@@ -77,7 +77,7 @@ const Testimonials = () => {
       rating: item.B || "",
       name: item.C || "",
       review: item.D || "",
-      profile: item.E || "",
+      profile: getDriveUrl(item.E) || "",
     }));
     setTestimonialsMetaData(result);
   };

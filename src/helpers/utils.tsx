@@ -40,3 +40,14 @@ export const fetchData = async (url: string, sheetNumber: number = 0) => {
 
 export const EXCEL_SHEET_URL =
   "https://script.google.com/macros/s/AKfycbxX0KX5GkKrkFLe9MgoLRrUuBBveAxZwNus-RSyjEwxfj3Dx-SpcCm7ooNIKaCtNpfuYQ/exec";
+
+export const getDriveUrl = (link: string) => {
+  if (link?.includes("drive.google.com")) {
+    const fileId = link.match(/\/file\/d\/([^\/]+)\//);
+    if (fileId) {
+      const updatedLink = `https://drive.google.com/uc?export=view&id=${fileId[1]}`;
+      return updatedLink;
+    }
+  }
+  return link;
+};

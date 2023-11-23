@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import FadeInWhenVisible from "../fade-in-visible";
 import NewsCard from "./card";
 import React, { useEffect, useState } from "react";
-import { fetchData } from "../../helpers/utils";
+import { fetchData, getDriveUrl } from "../../helpers/utils";
 import { useKeenSlider } from "keen-slider/react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -86,7 +86,7 @@ const NewsAndInsights = () => {
       title: item.E || "",
       description: item.F || "",
       completeDescription: item.F ? item.F.slice(0, 100) : "",
-      image: item.G || "",
+      image: getDriveUrl(item.G) || "",
       link: item.H || "",
     }));
     setNewsData(result);

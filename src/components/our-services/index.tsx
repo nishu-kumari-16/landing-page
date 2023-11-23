@@ -6,7 +6,7 @@ import LuggageIcon from "@mui/icons-material/Luggage";
 import StadiumIcon from "@mui/icons-material/Stadium";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import { useKeenSlider } from "keen-slider/react";
-import { fetchData } from "../../helpers/utils";
+import { fetchData, getDriveUrl } from "../../helpers/utils";
 import { ReactComponent as Loader } from "../../assets/icons/loader.svg";
 
 const OurServices = () => {
@@ -62,7 +62,7 @@ const OurServices = () => {
       airCondition: item.E || "",
       title: item.F || "",
       description: item.G || "",
-      image: item.H || "",
+      image: getDriveUrl(item.H) || "",
     }));
     type === "cabs" ? setCabsData(result) : setTransportData(result);
     type === "cabs" && setCurrentData(result);

@@ -25,7 +25,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="flex gap-4 m-4 tablet:m-[3rem] tablet:flex-row flex-col">
-        <AboutUsSvg className="flex-1" />
+        <AboutUsSvg className="flex-1 w-full" />
         <div className="self-center p-8 flex-1 shadow-md rounded-lg bg-solitudeGray">
           <ParagraphRenderer text={aboutUsMetaData} />
         </div>

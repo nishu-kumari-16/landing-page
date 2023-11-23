@@ -4,7 +4,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { fetchData } from "../../helpers/utils";
+import { fetchData, getDriveUrl } from "../../helpers/utils";
 import { ReactComponent as Loader } from "../../assets/icons/loader.svg";
 
 const ClientSays = () => {
@@ -77,7 +77,7 @@ const ClientSays = () => {
       rating: item.B || "",
       name: item.C || "",
       review: item.D || "",
-      profile: item.E || "",
+      profile: getDriveUrl(item.E) || "",
       designation: item.F || "",
     }));
     setTestimonialsMetaData(result);

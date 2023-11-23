@@ -79,14 +79,14 @@ const ContactUsForm = () => {
             register={register}
             placeholder="First Name"
             error={errors.firstName?.message?.toString()}
-            className="flex-1"
+            className="flex-1 w-[40%]"
           />
           <Input
             name="lastName"
             register={register}
             placeholder="Last Name"
             error={errors.lastName?.message?.toString()}
-            className="flex-1"
+            className="flex-1 w-[40%]"
           />
         </div>
         <div className="flex gap-4">
@@ -95,7 +95,7 @@ const ContactUsForm = () => {
             placeholder="Email"
             register={register}
             error={errors.email?.message?.toString()}
-            className="flex-1"
+            className="flex-1 w-[40%]"
           />
           <Input
             name="phone"
@@ -103,7 +103,7 @@ const ContactUsForm = () => {
             placeholder="Phone Number"
             register={register}
             error={errors.phone?.message?.toString()}
-            className="flex-1"
+            className="flex-1 w-[40%]"
           />
         </div>
         {errors.message?.message?.toString() && (

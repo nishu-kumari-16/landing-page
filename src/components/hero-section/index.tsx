@@ -3,7 +3,7 @@ import SearchBackground from "../../assets/icons/bg-shorten-desktop.svg";
 import ComponentSlider from "../component-slider";
 import { heroSectionImages } from "./meta";
 import { useEffect, useState } from "react";
-import { fetchData } from "../../helpers/utils";
+import { fetchData, getDriveUrl } from "../../helpers/utils";
 
 const HeroSection = () => {
   const [images, setImages] = useState<any>(heroSectionImages);
@@ -11,12 +11,14 @@ const HeroSection = () => {
     const url =
       "https://docs.google.com/spreadsheets/d/1z8DsULZIJ86-VGFNV03vZnvddSPpJqi6zhZti6MS_AI/edit?usp=sharing";
     const data = await fetchData(url, 0);
-    const result = data.slice(1).map((item: any) => item.B);
+    const result = data.slice(1).map((item: any) => {
+      return getDriveUrl(item.B);
+    });
     setImages(result);
   };
 
   useEffect(() => {
-    // convertToDesiredFormat();
+    convertToDesiredFormat();
   }, []);
 
   return (
