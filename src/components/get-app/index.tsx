@@ -14,7 +14,7 @@ const GetApp = () => {
           color={colorPalette.fulvous}
         >{`/// ONLINE BOOKING`}</Typography>
         <Typography fontSize={28} className="!font-semibold">
-          Get the Govahan Mobile App and Start Your Journey!
+          Get the Go Vahan Mobile App and Start Your Journey!
         </Typography>
 
         <Typography fontSize={12} className="text-darkGray">

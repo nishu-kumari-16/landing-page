@@ -20,9 +20,8 @@ const footerLinks = [
   {
     category: "Useful Links",
     links: [
-      { name: "Taxi Booking", path: "#" },
-      { name: "Help center", path: "#" },
-      { name: "Privacy and Policy", path: "/privacy-policy" },
+      { name: "Cancellation & Refund Policy", path: "/cancellation-refund" },
+      { name: "Privacy Policy", path: "/privacy-policy" },
       { name: "Terms of Use", path: "/terms-of-use" },
       { name: "Contact Us", path: "/contact" },
     ],

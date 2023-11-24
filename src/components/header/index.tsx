@@ -4,7 +4,7 @@ import { appRoutes } from "./meta";
 import colorPalette from "../..//helpers/color-palette";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -105,7 +105,7 @@ const Header = () => {
                 navigate("/", { state: { isNavigated: true } });
               }}
             >
-              Book a Taxi
+              Book a Vehicle
             </Button>
           </div>
         </Box>

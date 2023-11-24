@@ -12,6 +12,7 @@ import AboutUs from "./pages/about-us";
 import JoinUsPage from "./pages/join-us-page";
 import PrivacyPolicy from "./pages/privacy-policy";
 import TermsOfUse from "./pages/terms-of-use";
+import RefundCancellationPolicy from "./pages/refund-cancellation-policy";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
   {
     path: "terms-of-use",
     element: <TermsOfUse />,
+    loader: () => <Loader />,
+  },
+  {
+    path: "cancellation-refund",
+    element: <RefundCancellationPolicy />,
     loader: () => <Loader />,
   },
 ]);

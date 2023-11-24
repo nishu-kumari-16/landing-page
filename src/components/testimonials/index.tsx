@@ -97,7 +97,7 @@ const Testimonials = () => {
                 fontSize={13}
               >{`/// CLIENTS TESTIMONIAL`}</Typography>
               <Typography fontSize={24}>
-                Govahan Passenger Reviews...
+                Go Vahan Passenger Reviews...
               </Typography>
               <Typography fontSize={12} className="text-cloudyGray">
                 We successfully cope with tasks of varying complexity, provide

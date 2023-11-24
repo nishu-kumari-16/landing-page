@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <div className="flex px-4 tablet:px-[8rem] bg-mistGray pt-[4rem] pb-[6rem] mt-[6rem]">
         <div className="flex flex-col gap-4 rounded-lg p-6 shadow-lg bg-white">
           <h2>
-            <strong>GoVahan Privacy Policy</strong>
+            <strong>Go Vahan Privacy Policy</strong>
           </h2>
           <p>
             {` At Go Vahan carrier Pvt Ltd., (Operated under the brand of Go Vahan), we are dedicated to protect your personal

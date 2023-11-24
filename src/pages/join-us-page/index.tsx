@@ -12,7 +12,7 @@ const JoinUsPage = () => {
     <Layout>
       <div className="flex flex-col ">
         <div className="tablet:px-[10rem] px-4 py-[5rem] pt-[10rem] flex gap-6 bg-black items-start flex-col relative">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 z-[6] bg-[rgba(0,0,0,0.7)]">
             <Typography className="text-fulvous" fontSize={14} fontWeight={500}>
               GET IN TOUCH
             </Typography>

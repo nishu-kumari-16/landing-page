@@ -53,17 +53,25 @@ const AchievementsSection = () => {
   }, []);
   return (
     <FadeInWhenVisible>
+      <Typography
+        className="text-center py-8  text-fulvous bg-offWhite font-bold"
+        fontSize={20}
+        fontWeight={600}
+      >{`/// ACHIEVEMENTS`}</Typography>
       <Grid container columns={{ xs: 10, sm: 10, md: 12 }}>
         {achievementMetaData?.length ? (
           achievementMetaData.map((data: any, index: number) => {
             return (
               <Grid
                 item
-                xs={5}
-                sm={5}
+                xs={index === achievementMetaData.length - 1 ? 10 : 5}
+                sm={index === achievementMetaData.length - 1 ? 10 : 5}
                 md={2.4}
                 key={index}
-                className="flex flex-col relative"
+                className={`flex flex-col relative ${
+                  index === achievementMetaData.length - 1 &&
+                  "border-t border-t-mutedGray"
+                }`}
               >
                 <div
                   className="bg-fulvous w-full flex justify-center items-center py-[3rem] flex-col border-r border-gray"

@@ -4,8 +4,11 @@ import colorPalette from "../../helpers/color-palette";
 import Button from "../button";
 import { feelYourJourneyData } from "./meta";
 import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
+import { useNavigate } from "react-router-dom";
 
 const FeelYourJourney = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex bg-fulvous w-full tablet:w-[80%]  relative">
       <div className="flex  backdrop-brightness-90 gap-6 w-full flex-wrap py-[3rem] tablet:px-[8rem] px-4 tablet:z-0 z-[2]">
@@ -14,9 +17,14 @@ const FeelYourJourney = () => {
             GOVAHAN TRANSPORT SERVICES!
           </Typography>
           <Typography fontSize={24} fontWeight={700} color={colorPalette.white}>
-            Feel Your journey with Govahan!
+            Feel Your journey with Go Vahan!
           </Typography>
-          <Button className="!bg-black !px-6 !w-fit !text-white !capitalize">
+          <Button
+            className="!bg-black !px-6 !w-fit !text-white !capitalize"
+            onClick={() => {
+              navigate("/", { state: { isNavigated: true } });
+            }}
+          >
             Book a Ride
           </Button>
         </div>

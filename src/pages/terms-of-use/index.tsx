@@ -5,12 +5,12 @@ const TermsOfUse = () => {
     <Layout>
       <div className="flex px-4 tablet:px-[8rem] bg-mistGray pt-[4rem] pb-[6rem] mt-[6rem]">
         <div className="flex flex-col gap-4 rounded-lg p-6 shadow-lg bg-white">
-          <h2 className="font-bold">GoVahan Terms of Use</h2>
+          <h2 className="font-bold">Go Vahan Terms of Use</h2>
           <strong>8- Terms &amp; Conditions</strong>
 
           <p>
             This is user agreement (or Terms of Service&quot;) for Go Vahan , an
-            application owned and operated by GoVahan carrier Pvt. Ltd.
+            application owned and operated by Go Vahan carrier Pvt. Ltd.
           </p>
           <p>
             The Agreement, User Agreement or Terms of Service, individually and
@@ -249,7 +249,7 @@ const TermsOfUse = () => {
             privacy settings that You have set in such Third Party Accounts,
             personally identifiable information that You post to Your Third
             Party Accounts may be available on and through the Go Vahan
-            Platform.{" "}
+            Platform.
           </p>
           <p>
             6.6 - Please note that if a Third Party Account or associated

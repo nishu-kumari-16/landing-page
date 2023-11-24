@@ -70,7 +70,7 @@ const HeaderLarge = () => {
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                Book a Taxi
+                Book a Vehicle
               </Button>
             </div>
           </div>

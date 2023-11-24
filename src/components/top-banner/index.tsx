@@ -12,7 +12,7 @@ const TopBanner = () => {
       bgcolor={colorPalette.mutedGray}
     >
       <Typography color={colorPalette.codGray} fontSize={14} className="py-2">
-        Reliable Taxi Service & Transport Solutions!
+        Reliable Vehicle Service & Transport Solutions!
       </Typography>
       <Box className="flex gap-6 ">
         <Box className="flex gap-4 border-mistGray border-r border-l items-center px-6 py-2">
