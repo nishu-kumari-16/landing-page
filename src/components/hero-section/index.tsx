@@ -18,17 +18,17 @@ const HeroSection = () => {
   };
 
   useEffect(() => {
-    convertToDesiredFormat();
+    // convertToDesiredFormat();
   }, []);
 
   return (
-    <div className="flex flex-col-reverse tablet:flex-row relative py-[6rem] tablet:py-[12rem] mt-0 tablet:mt-[10rem]  text-center tablet:text-left gap-4 bg-[#1E3446]">
+    <div className="flex flex-col-reverse tablet:flex-row relative py-[6rem] tablet:pt-[10rem] pt-[4.5rem] tablet:py-[5rem] mt-0 tablet:mt-[10rem]  text-center tablet:text-left gap-4 bg-[#1E3446]">
       <img
         src={SearchBackground}
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full"
         alt="search-bg"
       />
-      <div className="flex flex-col gap-4 w-full tablet:w-[50%] justify-center items-center tablet:items-start tablet:pr-0 pr-[1.5rem] pl-[1.5rem] tablet:pl-[6rem]">
+      <div className="flex flex-col gap-4 tablet:gap-6 w-full tablet:w-[50%] justify-center items-center tablet:items-start tablet:pr-0 pr-[1.5rem] pl-[1.5rem] tablet:pl-[6rem]">
         <motion.div
           initial={{ opacity: 0, x: "-100vh" }}
           animate={{ opacity: 1, x: 0 }}
@@ -38,7 +38,7 @@ const HeroSection = () => {
           <div className="text-white !font-medium !text-lg text-left">
             Travel Securely With Us!
           </div>
-          <div className="text-white text-[2rem] tablet:text-[4rem] font-semibold leading-[2.25rem] tablet:leading-[4.5rem] text-left">
+          <div className="text-white text-[2rem] tablet:text-[4rem] font-medium leading-[2.25rem] tablet:leading-[4.5rem] text-left">
             Book your vehicle from anywhere today!
           </div>
           <div className="text-mutedGray text-md font-medium w-full tablet:w-[80%] text-left">
@@ -58,13 +58,13 @@ const HeroSection = () => {
         initial={{ opacity: 0, x: "200vh" }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="flex-1 laptop:mr-[-10%] mr-[0] self-center h-fit z-[3] relative tablet:absolute top-0 right-0 tablet:top-[8rem] tablet:right-[-30%] w-full"
+        className="flex-1 mr-[0] self-center h-fit z-[3] tablet:w-[50%] w-full"
       >
         <ComponentSlider
           components={images.map((data: any, index: number) => (
             <img
               src={data}
-              className="max-h-[453px] max-w-[800px] keen-slider__slide"
+              className="max-h-[806px] max-w-[800px] keen-slider__slide object-contain"
               key={index}
               alt={data}
             />

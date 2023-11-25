@@ -267,15 +267,6 @@ const TermsOfUse = () => {
             non-infringement, and Go Vahan is not responsible for any SNS
             Content.
           </p>
-          <p>
-            9- Category of the App- Map &amp; navigation . Travel and
-            Transportation 10- Domain details https://govahan.com/ Already
-            Shared 11- Server details Already Shared / Maxtra Technologies
-            private Limited 12- Application icons Created by Maxtra Technologies
-            private Limited 13- Google play console details
-            govahangpca121@gmail.com 14- Google Map Api Details
-            govahanmap121@gmail.com
-          </p>
         </div>
       </div>
     </Layout>

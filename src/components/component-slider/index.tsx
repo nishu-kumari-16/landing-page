@@ -44,7 +44,7 @@ const ComponentSlider = ({ components }: { components: any[] }) => {
 
   return (
     <div ref={sliderRef} className="keen-slider">
-      {components.map((data, index) => data)}
+      {components?.map((data, index) => data)}
     </div>
   );
 };
