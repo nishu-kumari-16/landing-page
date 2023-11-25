@@ -22,7 +22,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="flex flex-col-reverse tablet:flex-row relative py-[6rem] tablet:pt-[10rem] pt-[4.5rem] tablet:py-[5rem] mt-0 tablet:mt-[10rem]  text-center tablet:text-left gap-4 bg-[#1E3446]">
+    <div className="flex flex-col-reverse tablet:flex-row relative py-[6rem] tablet:pt-[5rem] pt-[4.5rem] tablet:py-[5rem] mt-0 tablet:mt-[10rem]  text-center tablet:text-left gap-4 bg-[#1E3446]">
       <img
         src={SearchBackground}
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full"
