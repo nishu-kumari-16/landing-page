@@ -18,7 +18,7 @@ const HeroSection = () => {
   };
 
   useEffect(() => {
-    // convertToDesiredFormat();
+    convertToDesiredFormat();
   }, []);
 
   return (
