@@ -50,63 +50,75 @@ const CareersForm = ({ isOpen, onClose, job }: any) => {
     fr.readAsArrayBuffer(file);
     fr.onload = (f) => {
       const url =
-        "https://script.google.com/macros/s/AKfycbwaXXyOIhUHM2Xih4AWhvV2i_0dc-BA7MHWNzwcMK5OwYPpxJhvoazvQT78wmFtI-ekFw/exec";
-
+        "https://script.google.com/macros/s/AKfycbyzOtHM5n1jvehM4-MCBOYJboJ2ZPXRdaZnQyt3P2qYhGYybbcEVpdwwaoSpr3mULAE/exec";
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        key !== "resume" && formData.append(key, value as any);
+      });
       const qs = new URLSearchParams({
         filename: data.resume[0].name || file.name,
         mimeType: file.type,
+        excelData: JSON.stringify(data),
       });
       fetch(`${url}?${qs}`, {
         method: "POST",
         body: JSON.stringify([...new Int8Array(f.target!.result as any)]),
-      })
-        .then((res) => res.json())
-        .then(
-          (
-            e // setLoading(true);
-          ) => {
-            const formData = new FormData();
-            Object.entries(data).forEach(([key, value]) => {
-              key !== "resume" && formData.append(key, value as any);
-            });
-            formData.append("type", "careers");
-            formData.append("resume", e.fileUrl);
+        mode: "no-cors",
+      }).then((res) => {
+        setLoading(false);
+        toast("Successfully Submitted your details", {
+          type: "success",
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+        });
 
-            fetch(EXCEL_SHEET_URL, {
-              method: "POST",
-              body: formData,
-              mode: "no-cors",
-            })
-              .then((res) => {
-                setLoading(false);
-                toast("Successfully Submitted your details", {
-                  type: "success",
-                  position: "top-center",
-                  autoClose: 5000,
-                  hideProgressBar: true,
-                });
+        reset();
+        onClose();
+      });
+      // .then((res) => res.json())
+      // .then(
+      //   (
+      //     e // setLoading(true);
+      //   ) => {
+      //     formData.append("type", "careers");
+      //     formData.append("resume", e.fileUrl);
 
-                reset();
-                onClose();
-              })
-              .catch((data) =>
-                toast("something went wrong. please try again!!", {
-                  type: "error",
-                  position: "top-center",
-                  autoClose: 5000,
-                  hideProgressBar: true,
-                })
-              );
-          }
-        )
-        .catch((err) =>
-          toast("something went wrong. please try again!!", {
-            type: "error",
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: true,
-          })
-        );
+      //     fetch(EXCEL_SHEET_URL, {
+      //       method: "POST",
+      //       body: formData,
+      //       mode: "no-cors",
+      //     })
+      //       .then((res) => {
+      //         setLoading(false);
+      //         toast("Successfully Submitted your details", {
+      //           type: "success",
+      //           position: "top-center",
+      //           autoClose: 5000,
+      //           hideProgressBar: true,
+      //         });
+
+      //         reset();
+      //         onClose();
+      //       })
+      //       .catch((data) =>
+      //         toast("something went wrong. please try again!!", {
+      //           type: "error",
+      //           position: "top-center",
+      //           autoClose: 5000,
+      //           hideProgressBar: true,
+      //         })
+      //       );
+      //   }
+      // )
+      // .catch((err) =>
+      //   toast("something went wrong. please try again!!", {
+      //     type: "error",
+      //     position: "top-center",
+      //     autoClose: 5000,
+      //     hideProgressBar: true,
+      //   })
+      // );
     };
   };
 

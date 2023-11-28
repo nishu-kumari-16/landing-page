@@ -33,7 +33,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, x: "-100vh" }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          className="flex flex-col gap-2 z-[9]"
+          className="flex flex-col gap-2 z-[9] pb-8"
         >
           <div className="text-white !font-medium !text-lg text-left">
             Travel Securely With Us!

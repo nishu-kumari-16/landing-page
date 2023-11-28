@@ -78,6 +78,7 @@ const BookYourTaxiRide = () => {
       formData.append(key, value as any);
     });
     formData.append("type", "bookRide");
+    formData.append("submissionDate", new Date().toDateString());
 
     fetch(EXCEL_SHEET_URL, {
       method: "POST",

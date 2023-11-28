@@ -39,7 +39,7 @@ export const fetchData = async (url: string, sheetNumber: number = 0) => {
 };
 
 export const EXCEL_SHEET_URL =
-  "https://script.google.com/macros/s/AKfycbxX0KX5GkKrkFLe9MgoLRrUuBBveAxZwNus-RSyjEwxfj3Dx-SpcCm7ooNIKaCtNpfuYQ/exec";
+  "https://script.google.com/macros/s/AKfycbz1ut3tlbGV12Z21kbpFWEKgFbts7Y7-22s0Iz1hdZ2DqrwFpl0GPG7jIfb5z-E__N_Zg/exec";
 
 export const getDriveUrl = (link: string) => {
   if (link?.includes("drive.google.com")) {

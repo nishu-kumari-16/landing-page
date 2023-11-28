@@ -51,6 +51,9 @@ const footerLinks = [
             <Button className="!bg-fulvous !text-black w-fit !rounded-tl-none !px-6 !text-xs">
               Subscribe now
             </Button>
+            <div className="text-md text-white mt-1 bg-[rgba(0,0,0,0.7)]">
+              copyright © 2023 Go Vahan. All rights reserved
+            </div>
           </div>
         ),
       },
